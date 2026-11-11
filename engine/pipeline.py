@@ -24,6 +24,7 @@ from collections import defaultdict
 
 from . import llm
 from .data import ROOT, load_all, to_text, view
+from .bank import build_items
 from .guards import gate
 from .prompts import SOLVER_SCHEMA, SOLVER_SYSTEM, AUDITOR_SCHEMA, auditor_system, PROMPT_VERSION
 from .scanners import comment_signals, parse_options, question_signals
@@ -68,7 +69,8 @@ def auditor_user(v: dict, qsig: list, solve: dict | None, reports: list, rsig: d
     return "\n".join(parts)
 
 
-def run(live: bool = False, only: str | None = None, check: bool = False) -> dict:
+def build(live: bool = False, only: str | None = None) -> dict:
+    """Run every stage; return results, findings and the console payload. Writes nothing."""
     questions, reports, taxonomy = load_all()
     by_q = defaultdict(list)
     for r in reports:
@@ -121,19 +123,24 @@ def run(live: bool = False, only: str | None = None, check: bool = False) -> dic
         cases.append(_case(v, q, qsig, solve, audit, case_reports, secondary))
 
     results.sort(key=lambda r: r["reportId"])
-    if check:
-        _check_committed(ROOT / "results.json", results)
-    _write(OUT / "results.json", results)
-    _write(OUT / "unreported_findings.json", unreported)
     cases.sort(key=lambda c: -c["urgency"]["score"])
     payload = {"generatedWith": {"promptVersion": PROMPT_VERSION, "provider": llm.PROVIDER,
                                  "stageMeta": _stage_meta()},
                "taxonomy": taxonomy, "cases": cases}
-    _write(OUT / "console" / "data.json", payload)
+    return {"results": results, "unreported": unreported, "cases": cases, "payload": payload}
+
+
+def run(live: bool = False, only: str | None = None, check: bool = False) -> dict:
+    out = build(live, only)
+    if check:
+        _check_committed(ROOT / "results.json", out["results"])
+    _write(OUT / "results.json", out["results"])
+    _write(OUT / "unreported_findings.json", out["unreported"])
+    _write(OUT / "console" / "data.json", out["payload"])
     # Same payload as a script so the console also works from file:// (no fetch).
     (OUT / "console" / "data.js").write_text(
-        "window.RF_DATA = " + json.dumps(payload, ensure_ascii=False) + ";\n", encoding="utf-8")
-    return {"results": results, "unreported": unreported, "cases": cases}
+        "window.RF_DATA = " + json.dumps(out["payload"], ensure_ascii=False) + ";\n", encoding="utf-8")
+    return out
 
 
 def _case(v, q, qsig, solve, audit, case_reports, secondary):
@@ -154,7 +161,8 @@ def _case(v, q, qsig, solve, audit, case_reports, secondary):
         "record": {k: v[k] for k in ("question", "solution", "answer", "questionType", "quesImages", "errorHistory")},
         "options": parse_options(v["question"]) if v["questionType"] != "integerQuestion" else None,
         "signals": qsig, "solve": solve, "solution_concludes": audit.get("solution_concludes"),
-        "reports": case_reports, "secondary": secondary, "lane": lane, "needsHuman": needs_human,
+        "reports": case_reports, "secondary": secondary, "items": build_items(v["id"], case_reports, secondary),
+        "lane": lane, "needsHuman": needs_human,
         "urgency": {"score": score, "severity": sev, "reports": n},
     }
 

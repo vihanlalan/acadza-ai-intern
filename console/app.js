@@ -19,29 +19,89 @@
     } catch (_) { /* private mode etc. */ }
     return { decisions: {}, log: [], reviewer: "Faculty", theme: null };
   }
-  function saveState() { try { localStorage.setItem(LS_KEY, JSON.stringify(store)); } catch (_) { /* ignore */ } }
+  // This browser's own decisions. In shared mode store.decisions/log point at the server's copy instead,
+  // and these stay untouched so switching modes never mixes the two.
+  const localDL = { decisions: store.decisions, log: store.log };
+  function saveState() {
+    try { localStorage.setItem(LS_KEY, JSON.stringify({ ...store, decisions: localDL.decisions, log: localDL.log })); } catch (_) { /* ignore */ }
+  }
+
+  // ------------------------------------------------------------ shared queue ---
+  // When the site has an API with a database (Vercel + Upstash, or `python -m engine.server`), every
+  // reviewer works on one queue. Otherwise (file://, static host) decisions stay in this browser.
+  const sync = { mode: "local", backend: null, needsKey: false, saving: 0, sig: "", error: null };
+
+  async function api(path, body) {
+    const headers = { "Content-Type": "application/json" };
+    if (store.facultyKey) headers["X-Faculty-Key"] = store.facultyKey;
+    const r = await fetch("api/" + path, body ? { method: "POST", headers, body: JSON.stringify(body), cache: "no-store" } : { cache: "no-store" });
+    let data = null;
+    try { data = await r.json(); } catch (_) { /* not JSON: static host without an API */ }
+    return { status: r.status, data };
+  }
+
+  async function pull() {
+    if (location.protocol === "file:" || sync.saving) return;
+    let res;
+    try { res = await api("state"); } catch (_) { return renderSync(); }
+    if (res.status !== 200 || !res.data?.shared) { if (sync.mode === "shared") { sync.error = "Can't reach the shared queue"; renderSync(); } return; }
+    const first = sync.mode !== "shared";
+    Object.assign(sync, { mode: "shared", backend: res.data.backend, needsKey: res.data.writeKey, error: null });
+    const log = res.data.log;
+    const sig = `${log.length}|${log.at(-1)?.at || ""}|${Object.keys(res.data.decisions).length}`;
+    if (first || sig !== sync.sig) {
+      sync.sig = sig;
+      store.decisions = res.data.decisions;
+      store.log = log;
+      if (first) ui.undo = [];
+      if (!ui.editing) render();
+    }
+    renderSync();
+  }
+
+  function renderSync() {
+    const el = $("#sync");
+    if (!el) return;
+    const shared = sync.mode === "shared";
+    el.className = "sync " + (sync.error ? "err" : sync.saving ? "busy" : shared ? "ok" : "local");
+    el.textContent = sync.error ? sync.error : sync.saving ? "Saving…" : shared ? "Shared · saved" : "This browser only";
+    el.title = shared ? `Decisions are saved for every reviewer (${sync.backend}). Colleagues' decisions appear within 15 seconds.`
+      : "No shared database on this deployment: decisions are kept in this browser only.";
+    $("#key-row").hidden = !(shared && sync.needsKey);
+    $("#btn-bank").hidden = !shared;
+  }
+
+  function sendDecision(itemId, body, optimistic, prev) {
+    sync.saving++; renderSync();
+    return api(body.expect ? "undo" : "decide", { itemId, by: store.reviewer || "Faculty", ...body })
+      .then(({ status, data }) => {
+        if (status === 200) {
+          if (data.decision) store.decisions[itemId] = data.decision;
+          store.log.push(data.entry);
+          sync.error = null;
+          return;
+        }
+        // roll back the optimistic change
+        if (optimistic) delete store.decisions[itemId]; else if (prev) store.decisions[itemId] = prev;
+        if (status === 409 && data?.current) store.decisions[itemId] = data.current;
+        if (status === 401) { openDrawer(true); $("#faculty-key").focus(); }
+        toast(status === 409 ? `Not saved: ${data.error}` : status === 401 ? "Enter the faculty key (in the Audit log panel) to save decisions"
+          : `Not saved: ${data?.error || "server error " + status}`, false);
+      })
+      .catch(() => {
+        if (optimistic) delete store.decisions[itemId]; else if (prev) store.decisions[itemId] = prev;
+        toast("Not saved: you look offline. Try again.", false);
+      })
+      .finally(() => { sync.saving--; renderSync(); if (!ui.editing) render(); });
+  }
 
   // ------------------------------------------------------------ model ---
   const listify = (e) => (e == null ? [] : Array.isArray(e) ? e : [e]);
 
   const CASES = D.cases.map((c) => {
-    const items = [];
-    const groups = new Map();
-    for (const r of c.reports) {
-      const k = [r.verdict, r.repair, r.route, JSON.stringify(r.edit)].join("|");
-      if (!groups.has(k)) groups.set(k, []);
-      groups.get(k).push(r);
-    }
-    let i = 0;
-    for (const reps of groups.values()) {
-      const r = reps[0];
-      items.push({ id: `${c.questionId}:R${i++}`, kind: "reported", reports: reps, verdict: r.verdict, repair: r.repair,
-        route: r.route, edit: r.edit, suggestion: r.suggestion, confidence: r.confidence, evidence: r.evidence, checks: r.checks });
-    }
-    for (const f of c.secondary) {
-      items.push({ id: f.findingId, kind: "finding", reports: [], verdict: "defect", repair: f.repair, route: f.route,
-        edit: f.edit, suggestion: f.suggestion, confidence: f.confidence, evidence: f.evidence, checks: f.checks });
-    }
+    // Items (what a reviewer decides on) come from the pipeline so the server uses the same ids.
+    const byRep = Object.fromEntries(c.reports.map((r) => [r.reportId, r]));
+    const items = c.items.map((it) => ({ ...it, reports: it.reportIds.map((id) => byRep[id]) }));
     const reported = items.filter((x) => x.kind === "reported");
     let lane = "closed";
     if (reported.some((x) => x.verdict === "defect" && x.route === "faculty_review")) lane = "review";
@@ -497,7 +557,10 @@
     const { item, c } = ITEMS[itemId];
     const dec = { action, at: new Date().toISOString(), by: store.reviewer || "Faculty", ...extra };
     store.decisions[itemId] = dec;
-    store.log.push({
+    if (sync.mode === "shared") {
+      // optimistic: move on immediately; the server confirms or the decision is put back
+      sendDecision(itemId, { action, edits: extra.edits, replies: extra.replies }, true);
+    } else store.log.push({
       at: dec.at, actor: dec.by, action, questionId: c.questionId, itemId, reportIds: item.reports.map((r) => r.reportId),
       verdict: item.verdict, repair: item.repair, aiRoute: item.route,
       edit: extra.edits ?? item.edit ?? null, replies: extra.replies ?? undefined,
@@ -526,11 +589,13 @@
   function undo(itemId) {
     const id = itemId || ui.undo.pop();
     if (!id || !store.decisions[id]) return;
+    if (sync.mode === "shared" && sync.saving) { if (!itemId) ui.undo.push(id); return toast("Still saving, try undo again in a second", false); }
     if (itemId) ui.undo = ui.undo.filter((x) => x !== id);
     const { c } = ITEMS[id];
     const prev = store.decisions[id];
     delete store.decisions[id];
-    store.log.push({ at: new Date().toISOString(), actor: store.reviewer || "Faculty", action: "undo", questionId: c.questionId, itemId: id, undid: prev.action });
+    if (sync.mode === "shared") sendDecision(id, { expect: prev.at }, false, prev);
+    else store.log.push({ at: new Date().toISOString(), actor: store.reviewer || "Faculty", action: "undo", questionId: c.questionId, itemId: id, undid: prev.action });
     saveState();
     ui.lane = c.lane; ui.current = c.questionId; ui.focus = id;
     toast("Undone", false);
@@ -611,7 +676,9 @@
   function provenance() {
     const g = D.generatedWith;
     const meta = Object.entries(g.stageMeta || {}).map(([k, v]) => `${k}: ${v.join(", ")}`).join(" · ");
-    return `Precomputed by the triage pipeline (prompts ${esc(g.promptVersion)}). Configured LLM provider: ${esc(g.provider)} — used for cost reasons; production target is the Claude API. Stage outputs in this build — ${esc(meta)}. Decisions are saved in this browser only.`;
+    return `Precomputed by the triage pipeline (prompts ${esc(g.promptVersion)}). Configured LLM provider: ${esc(g.provider)} — used for cost reasons; production target is the Claude API. Stage outputs in this build — ${esc(meta)}. ${sync.mode === "shared"
+      ? "Decisions are saved to the shared queue; approved fixes flow into the patched question bank (Audit log → Patched questions)."
+      : "This deployment has no shared database, so decisions are saved in this browser only."}`;
   }
 
   // ------------------------------------------------------------ events ---
@@ -648,6 +715,7 @@
     const el = ev.target;
     if (el.id === "search") { ui.q = el.value; renderQueue(); return; }
     if (el.id === "reviewer") { store.reviewer = el.value || "Faculty"; saveState(); return; }
+    if (el.id === "faculty-key") { store.facultyKey = el.value.trim(); saveState(); return; }
     if (!ui.editing) return;
     if (el.dataset.reply) { ui.editing.replies[el.dataset.reply] = el.value; return; }
     if (el.dataset.edit != null) {
@@ -708,6 +776,11 @@
   if (store.theme) document.documentElement.dataset.theme = store.theme;
   $("#reviewer").value = store.reviewer || "Faculty";
   const fromHash = (location.hash.match(/q=([0-9a-f]{24})/) || [])[1];
+  $("#faculty-key").value = store.facultyKey || "";
   if (fromHash && BY_ID[fromHash]) { ui.lane = BY_ID[fromHash].lane; ui.current = fromHash; render(); }
   else setLane("review");
+  renderSync();
+  pull();
+  setInterval(() => { if (document.visibilityState === "visible") pull(); }, 15000);
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") pull(); });
 })();

@@ -161,11 +161,19 @@ After that, these are the messages I sent while it was building, exactly as I ty
 
 > "[Groq API key removed] here, please use this groq api key"
 
+> "no, the build step should be there bro wth. add a build step and then redo the outputs"
+
+> "save decisions to a database instead of the browser, so faculty share one queue and approved edits actually update the question bank
+>
+> implement this please."
+
 What I was doing with these:
 
 - Checks before code. The brief told it to check the plan against the raw data before writing code.
 - Provider in my hands. I kept that decision: Groq for now, Claude for production.
 - Design as a requirement. I made the console's design count as much as triage accuracy.
+- A real build. I didn't want the deploy to just serve files. The build regenerates the console data, fails if `results.json` is stale and runs the tests.
+- A shared queue. Faculty decisions had to land in one place and actually change the questions, not sit in one browser.
 - A clean pause. When I had to leave, I asked for a written handoff (`HANDOFF.md`), so the session could pick up from a known state instead of from memory.
 
 The full session transcript is available if you want to see every exchange.
@@ -238,7 +246,7 @@ The diff highlight can't break the math. Each edit is trimmed to its smallest re
 
 One key per decision. The console moves to the next question 150 ms after the last item is decided. Undo adds a new entry to the audit log instead of deleting the old one, and the log exports as JSON.
 
-Static site, no backend. It loads instantly and costs nothing per view. Decisions are stored in the reviewer's browser for this demo. In production they'd go to the content service with the same audit format.
+One shared queue. The console itself is static, so it loads instantly and costs nothing per view, but decisions go to a small API (`engine/api.py`, Vercel functions in `api/`) backed by Redis on Vercel or SQLite locally. Two things mattered to me here. First, two teachers can't overwrite each other: every write is a compare-and-swap on one item, so if Asha approves a fix and Ravi rejects it a second later, Ravi's write is refused and he sees Asha's decision. Second, the browser isn't trusted. The server rebuilds the audit entry itself, keeps a faculty edit inside the repair's allowed fields, re-checks that `find` matches the stored record exactly once and refuses scripts. Approved fixes then flow into a patched question bank (`engine/bank.py`) in the same document shape as `questions.json`, with an `errorHistory` entry for each change. If two approved fixes collide on one question, the second is reported as a conflict instead of being applied. If a deployment has no database, the console says "This browser only" and keeps decisions locally, so it never pretends to save.
 
 ### Cost at Acadza's scale (about 8 lakh questions)
 

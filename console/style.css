@@ -284,3 +284,18 @@ details.more[open] > summary { margin-bottom: 10px; }
   .actionbar .btn kbd, .diff-bar .lbl { display: none; }
   .verdict-row .conf { margin-left: 0; }
 }
+
+/* shared-queue status */
+.sync { font-size: 12px; color: var(--ink-3); display: inline-flex; align-items: center; gap: 6px; margin-right: 4px; white-space: nowrap; }
+.sync::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ink-3); }
+.sync.ok::before { background: var(--auto); }
+.sync.busy::before { background: var(--review); animation: rf-pulse 1s ease-in-out infinite; }
+.sync.err { color: var(--danger); } .sync.err::before { background: var(--danger); }
+@keyframes rf-pulse { 50% { opacity: .3; } }
+@media (prefers-reduced-motion: reduce) { .sync.busy::before { animation: none; } }
+@media (max-width: 760px) { .sync { font-size: 0; gap: 0; } }
+a.btn { text-decoration: none; display: inline-flex; align-items: center; }
+[hidden] { display: none !important; }
+.progress span, #btn-log { white-space: nowrap; }
+@media (max-width: 1500px) { .progress .bar { display: none; } }
+@media (max-width: 1400px) { .sync { font-size: 0; gap: 0; } }

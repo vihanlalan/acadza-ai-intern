@@ -29,7 +29,9 @@ Needs Python 3.10+ and nothing else (standard library only).
 
 ```bash
 python -m engine.pipeline                 # rebuild results.json, unreported_findings.json, console data from the cache
-python -m unittest engine.test_guards -v  # 16 tests: gate scope, exact-match, key consensus, injection, scanners, results schema
+python -m unittest engine.test_guards engine.test_shared -v   # 23 tests: gate, scanners, results schema, shared queue, patched bank
+python -m engine.server                   # console + shared queue on http://localhost:8000 (SQLite in .data/)
+python -m engine.bank --decisions audit-log.json --out questions.patched.json   # full bank with reviewed fixes applied
 
 # re-run the LLM stages (overwrites engine/cache/*.json)
 GROQ_API_KEY=... python -m engine.pipeline --live
@@ -53,12 +55,15 @@ Open the console: after running the pipeline once, `console/index.html` works st
   - A three-way check: blind solve vs stored solution vs stored key vs what the student said.
   - Each student's reply sits next to their comment, and you can edit it.
 - **Keyboard:** `A` approve, `R` reject or roll back, `E` edit, `J`/`K` move between questions, `U` undo.
-- **Audit log:** every decision is recorded. Undo adds an entry rather than deleting one, and the log exports as JSON. Decisions are stored in the browser for this demo.
+- **Shared queue:** decisions are saved to a database, so every reviewer works on one queue and sees colleagues' decisions within 15 seconds. If two people act on the same item, the second gets the first one's decision back instead of overwriting it. The top bar says "Shared · saved" or, on a deployment with no database, "This browser only".
+- **Audit log:** append-only and written by the server (undo adds an entry), exportable as JSON.
+- **Patched questions:** the Audit log panel downloads every question changed by auto-applied and approved fixes, in the same shape as `questions.json`, each with an `errorHistory` entry. Rolled-back fixes are left out, and two fixes that collide are listed as conflicts instead of applied.
 
 ## Layout
 
 ```
-engine/   data.py · scanners.py · prompts.py · llm.py · guards.py · pipeline.py · test_guards.py · cache/
+engine/   data.py · scanners.py · prompts.py · llm.py · guards.py · pipeline.py · bank.py · store.py · api.py · server.py · tests · cache/
+api/      state.py · decide.py · undo.py · bank.py (Vercel functions, all call engine/api.py)
 console/  index.html · style.css · app.js · data.js (generated)
 data/     questions.json · reports.json · taxonomy.json (provided)
 ```
@@ -73,6 +78,22 @@ python3 -m engine.pipeline --check && python3 -m unittest engine.test_guards
 
 1. The pipeline regenerates the console data (`console/data.js`, which is not committed) from `data/` and the cached stage outputs.
 2. `--check` fails the deploy if the committed `results.json` differs from what the code produces. That way the scored file and the live console can never drift apart.
-3. The 17 gate and scanner tests must pass.
+3. All 23 tests must pass (gate, scanners, shared queue, patched bank).
 
 The site is then served from `console/`. On Vercel, keep the project's Root Directory at the repo root, and the settings in `vercel.json` apply.
+
+The shared queue runs as Python functions in `api/` (code in `engine/api.py`, `engine/store.py`, `engine/bank.py`). To switch it on:
+
+1. In the Vercel project, open Storage, add **Upstash for Redis** (free tier) and connect it to the project. That sets `KV_REST_API_URL` and `KV_REST_API_TOKEN` (or the `UPSTASH_REDIS_REST_*` pair), which the API reads.
+2. Optional: set `RF_FACULTY_KEY` to require a shared key for writes. Reviewers enter it once in the Audit log panel. Without it, anyone with the link can record decisions.
+3. Redeploy.
+
+Without a database the API answers 503 and the console falls back to saving in the browser. Netlify serves the static console only, so it always runs in that mode.
+
+| | Shared queue (Vercel + Redis, or `engine.server`) | No database |
+|---|---|---|
+| Who sees a decision | every reviewer | that browser |
+| Two people on one item | second write refused, shows the first | n/a |
+| Patched questions download | yes | no (use `engine.bank` on an exported log) |
+
+For production at Acadza's scale, I'd point `engine/store.py` at the content service's database and put the console behind staff SSO. The API contract stays the same.

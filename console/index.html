@@ -22,6 +22,7 @@
   </div>
   <nav class="lanes" id="lanes" role="tablist" aria-label="Queues"></nav>
   <div class="top-right">
+    <span class="sync local" id="sync" role="status" aria-live="polite"></span>
     <div class="progress" id="progress" title="Decisions made on items that need a faculty decision"></div>
     <button class="icon-btn" id="btn-log" title="Audit log (L)">Audit log <span class="count" id="log-count">0</span></button>
     <button class="icon-btn" id="btn-help" title="Keyboard shortcuts (?)">?</button>
@@ -54,11 +55,13 @@
     <h2>Audit log</h2>
     <div class="drawer-actions">
       <label class="reviewer">Reviewer <input id="reviewer" maxlength="40"></label>
+      <label class="reviewer" id="key-row" hidden>Faculty key <input id="faculty-key" type="password" autocomplete="off" maxlength="200"></label>
+      <a class="btn ghost" id="btn-bank" href="api/bank?download=1" hidden title="Questions changed by auto-applied and approved fixes, in production format">Patched questions</a>
       <button class="btn ghost" id="btn-export">Export JSON</button>
       <button class="btn ghost" id="btn-close-drawer" aria-label="Close">✕</button>
     </div>
   </div>
-  <p class="drawer-note">Append-only. Undo adds an entry instead of deleting one. Stored in this browser; export to hand over.</p>
+  <p class="drawer-note">Append-only. Undo adds an entry instead of deleting one. Shared with every reviewer when the deployment has a database, otherwise kept in this browser. Export to hand over.</p>
   <ol class="log" id="log"></ol>
 </div>
 
