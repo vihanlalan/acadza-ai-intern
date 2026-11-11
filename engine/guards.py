@@ -63,6 +63,17 @@ def gate(proposal: dict, v: dict, taxonomy: dict, solver: dict | None, solution_
 
     if verdict != "defect":
         check("non-defect carries no edit", True, "repair/edit cleared, route no_change")
+        # Tripwire: the gate otherwise only downgrades, so an auditor that misses a wrong key would leave it
+        # live. If the blind solve confidently lands on a different valid answer, a human looks.
+        clash = _key_clash(solver, v)
+        if clash:
+            check("blind solve agrees with the stored key", False, clash)
+            return _row(verdict, None, None, None, "faculty_review", conf, checks, after=None)
+        # "It's the app" is only believable if the stored record is clean.
+        broken = sorted({s["code"] for s in question_signals(v)} & RECORD_BROKEN_SIGNALS)
+        if verdict == "display_issue" and broken:
+            check("record is clean (so it really is a display issue)", False, f"scanners found {', '.join(broken)} in the stored record")
+            return _row(verdict, None, None, None, "faculty_review", conf, checks, after=None)
         return _row(verdict, None, None, None, "no_change", conf, checks, after=None)
 
     if not check("repair in taxonomy", repair in taxonomy["repairs"], str(repair)):
@@ -157,6 +168,26 @@ def resolve_answer(ans, v: dict) -> list[str]:
         n = _num(ans)
         hits = [k for k, t in opts.items() if _num(t) == n]
     return sorted(hits) if len(hits) == 1 else (letters or [target])
+
+
+CLASH_MIN_CONFIDENCE = 0.9
+# Scanner codes that prove the stored record itself is broken (not a rendering quirk of the app).
+RECORD_BROKEN_SIGNALS = {"latex_leak", "figure_missing", "math_unbalanced", "align_amp_leak"}
+
+
+def _key_clash(solver: dict | None, v: dict) -> str:
+    """Non-empty when a confident blind solve picks a different, valid answer than the stored key."""
+    if not solver or float(solver.get("confidence") or 0) < CLASH_MIN_CONFIDENCE:
+        return ""
+    key = sorted(answer_letters(v["answer"])) or [_num(v["answer"])]
+    got = resolve_answer(solver.get("final_answer"), v)
+    if v["questionType"] == "integerQuestion":
+        valid = bool(got) and all(re.fullmatch(r"-?\d+(\.\d+)?", g) for g in got)
+    else:
+        valid = bool(got) and all(g in "ABCD" and len(g) == 1 for g in got)
+    if not valid or got == key:
+        return ""
+    return f"blind solve {', '.join(got)} vs stored key {', '.join(key)}"
 
 
 def _row(verdict, repair, edit, suggestion, route, conf, checks, after):

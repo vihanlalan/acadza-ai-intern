@@ -704,5 +704,123 @@
    "prompt_version": "v3",
    "seconds": 2.5
   }
+ },
+ "63765a28f1d8416ae0408d89": {
+  "output": {
+   "final_answer": "C",
+   "value": "180 days",
+   "working": "N(t)=N0(1/2)^{t/60}; for 7/8 disintegrated remaining N/N0=1/8=(1/2)^3 => t/60=3 => t=180 days",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 426.5
+  }
+ },
+ "68c8153cfb6b2f16e2d3ceaf": {
+  "output": {
+   "final_answer": [
+    "A",
+    "B",
+    "D"
+   ],
+   "value": "",
+   "working": "In a uniform electric field, force qE is constant. For u // E the acceleration is along the motion → straight line (A). For u ⟂ E the motion is uniformly accelerated perpendicular to the initial velocity → projectile‑like parabola (B). In a uniform magnetic field, magnetic force q(v×B) is ⟂ v. If u // B, v×B=0 → no magnetic force → straight line, not a helix (C false). If u ⟂ B, particle moves in a circle in a plane normal to B (D).",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "multiple_correct",
+   "chapter_fit": "mismatch",
+   "suggested_chapter": "Moving Charges and Magnetism",
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 671.0
+  }
+ },
+ "6956d7e988d7701e5617bd3e": {
+  "output": {
+   "final_answer": "D",
+   "value": "8 sqrt(2) m",
+   "working": "T=16 s → ω=2π/T=π/8 rad s⁻¹. For SHM starting from equilibrium take x=A sin(ωt), v=ωA cos(ωt). At t=2 s, v=π → π= (π/8)·A·cos(π/4)= (π/8)·A·(√2/2)= (πA√2)/16 → A=16/√2=8√2 m. Hence option D.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 810.4
+  }
+ },
+ "6956d7bb23cb221e570d6013": {
+  "output": {
+   "final_answer": "B",
+   "value": "tan^{-1}(4)",
+   "working": "For projectile with initial speed u, range R = u^2 sin2θ / g and maximum height H = u^2 sin^2θ / (2g). Equate R = H: sin2θ = sin^2θ/2 ⇒ 2 sin2θ = sin^2θ ⇒ 4 sinθ cosθ = sin^2θ ⇒ sinθ(4 cosθ - sinθ)=0. Non‑trivial solution gives tanθ = 4, so θ = tan^{-1}(4).",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 675.9
+  }
+ },
+ "68dea7c2387eea3d0d95f9bb": {
+  "output": {
+   "final_answer": "8",
+   "value": "8 cm",
+   "working": "Extra optical path due to slab1 = (n1-1)·t1 = 0.5·2 mm = 1 mm. Extra optical path due to slab2 = (n2-1)·t2 = 0.4·1.5 mm = 0.6 mm. Net path difference Δ = 1 mm – 0.6 mm = 0.4 mm = 4×10⁻⁴ m. Shift of central fringe y = Δ·L/d = (4×10⁻⁴ m)(1 m)/(5×10⁻³ m) = 0.08 m = 8 cm.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.97
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 5.2
+  }
+ },
+ "68ecbacb2ec87a18deba1ad7": {
+  "output": {
+   "final_answer": "B",
+   "value": "",
+   "working": "The absolute refractory period occurs because voltage‑gated Na+ channels become inactivated after opening and cannot be reopened until they recover, preventing a second action potential. None of the other options cause the absolute refractory period.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "mismatch",
+   "suggested_chapter": "Human Physiology (Neurophysiology)",
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 1.5
+  }
  }
 }

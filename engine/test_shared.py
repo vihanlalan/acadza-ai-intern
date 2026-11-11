@@ -7,7 +7,13 @@ from pathlib import Path
 
 from . import api
 from .bank import build_bank
-from .store import SqliteStore
+from .store import MemoryStore, SqliteStore
+
+try:
+    import sqlite3  # noqa: F401
+    HAVE_SQLITE = True
+except ImportError:  # e.g. some serverless build images
+    HAVE_SQLITE = False
 
 
 def call(method, route, body=None, headers=None):
@@ -16,10 +22,22 @@ def call(method, route, body=None, headers=None):
     return status, payload
 
 
+@unittest.skipUnless(HAVE_SQLITE, "sqlite3 not available")
+class Sqlite(unittest.TestCase):
+    def test_compare_and_swap(self):
+        with tempfile.TemporaryDirectory() as d:
+            st = SqliteStore(Path(d) / "t.db")
+            dec = {"action": "approved", "at": "t1", "by": "A"}
+            self.assertEqual(st.swap("x", "", dec, {"a": 1}), (True, dec))
+            self.assertEqual(st.swap("x", "", {"action": "rejected", "at": "t2", "by": "B"}, {"a": 2}), (False, dec))
+            self.assertTrue(st.swap("x", "t1", None, {"a": 3})[0])
+            self.assertEqual(st.snapshot(), {"decisions": {}, "log": [{"a": 1}, {"a": 3}]})
+
+
 class SharedQueue(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
-        api.STORE = SqliteStore(Path(self.tmp.name) / "t.db")
+        api.STORE = MemoryStore()
         self.items = api.ctx()["items"]
         self.auto = next(i for i in self.items.values() if i["route"] == "auto_apply" and i["kind"] == "reported"
                          and isinstance(i["edit"], dict) and i["edit"]["field"] in ("question", "solution"))

@@ -1099,5 +1099,194 @@
    "prompt_version": "v3",
    "seconds": 1368.9
   }
+ },
+ "622f08d7b70e4b50e4500a1b": {
+  "output": {
+   "solution_concludes": "C",
+   "reports": {
+    "R010": {
+     "verdict": "defect",
+     "repair": "option_repair",
+     "edit": null,
+     "route_request": "faculty_review",
+     "confidence": 0.96,
+     "evidence": "Option D is absent from the question HTML; only options A‑C are present.",
+     "student_reply": "Thanks for pointing out that only three options show up; we’ll have a teacher add the missing option D."
+    },
+    "R009": {
+     "verdict": "defect",
+     "repair": "option_repair",
+     "edit": null,
+     "route_request": "faculty_review",
+     "confidence": 0.96,
+     "evidence": "Option D is missing from the rendered question HTML.",
+     "student_reply": "We appreciate you noticing the missing option D and will get it fixed shortly."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "markup_leak",
+     "edit": {
+      "field": "solution",
+      "find": "vCM&=",
+      "replace": "vCM ="
+     },
+     "confidence": 0.97,
+     "evidence": "Solution text contains stray '&' before the equals sign (\"vCM&=\")."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 1699.3
+  }
+ },
+ "63765a28f1d8416ae0408d89": {
+  "output": {
+   "solution_concludes": "180 days",
+   "reports": {
+    "R014": {
+     "verdict": "display_issue",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "The raw HTML contains '\\\\frac{7}{8}' which is shown as plain text instead of rendered math.",
+     "student_reply": "Thanks for noticing the LaTeX showing up in the question. The formatting issue will be corrected."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 1372.3
+  }
+ },
+ "68c8153cfb6b2f16e2d3ceaf": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R020": {
+     "verdict": "defect",
+     "repair": "answer_key",
+     "edit": {
+      "field": "answer",
+      "find": "\"A, B, D\"",
+      "replace": "\"A\",\"B\",\"D\""
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "The answer array contains one string \"A, B, D\" instead of three separate entries, causing graders to treat it as a single option.",
+     "student_reply": "Your selections A, B and D are correct; the system stored the answer as one combined string, so it was marked wrong. The answer format has been fixed."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 1507.1
+  }
+ },
+ "6956d7e988d7701e5617bd3e": {
+  "output": {
+   "solution_concludes": "D",
+   "reports": {
+    "R030": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "Solution gives A = 8√2 m, which matches option D.",
+     "student_reply": "Your calculation missed a step: using v = ωA cos(ωt) with ω = π/8 rad/s and t = 2 s gives A = 8√2 m, so option D is correct."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 2038.5
+  }
+ },
+ "6956d7bb23cb221e570d6013": {
+  "output": {
+   "solution_concludes": "B",
+   "reports": {
+    "R028": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "The solution derives tanθ=4, so the correct answer is option B (tan⁻¹4), not tan⁻¹2.",
+     "student_reply": "The correct answer is tan⁻¹4 (option B); the derivation shows tanθ=4, so the answer key is right."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 2.5
+  }
+ },
+ "68dea7c2387eea3d0d95f9bb": {
+  "output": {
+   "solution_concludes": "0.08 m",
+   "reports": {
+    "R032": {
+     "verdict": "defect",
+     "repair": "solution_fix",
+     "edit": {
+      "field": "solution",
+      "find": "0.08 m",
+      "replace": "8 cm"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.98,
+     "evidence": "Solution ends with 0.08 m while the question requests the shift in cm; correct value is 8 cm.",
+     "student_reply": "Your answer 0.08 m is correct numerically, but the question asks for centimeters. 0.08 m equals 8 cm, which matches the stored answer."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 275.7
+  }
+ },
+ "68ecbacb2ec87a18deba1ad7": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R023": {
+     "verdict": "defect",
+     "repair": "wrong_chapter",
+     "edit": null,
+     "route_request": "faculty_review",
+     "confidence": 0.99,
+     "evidence": "question_text discusses neuronal refractory period, which belongs to Human Physiology (Neurophysiology) not to \"The Living World\" chapter.",
+     "student_reply": "You are correct—the question is about neural physiology, not the Living World chapter. We will move it to the appropriate chapter."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 2036.6
+  }
  }
 }

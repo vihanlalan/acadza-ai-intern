@@ -34,7 +34,7 @@ questions.json ► Stage 1  scanners.py   plain code, no LLM: blank/missing/dupl
                  ├► Stage 2  blind solver sees ONLY the question (no key, no solution, no comment)
                  ├► Stage 3  auditor      record + scanner facts + blind solve + fenced comments
                  │                        → verdict, repair, surgical edit, evidence, reply per student
-                 └► Stage 4  guards.py    plain code that can only DOWNGRADE a route
+                 └► Stage 4  guards.py    plain code that can only make a route MORE careful
                               ├ verdict and repair must be taxonomy keys
                               ├ every edited field must be in the repair's allowed fields
                               ├ `find` must occur exactly once in the live record
@@ -43,7 +43,10 @@ questions.json ► Stage 1  scanners.py   plain code, no LLM: blank/missing/dupl
                               ├ answer_key: blind solve == new key AND stored solution concludes new key
                               ├ a comment flagged as injection can never trigger a write
                               ├ confidence >= 0.85, and the auditor didn't ask for a human
-                              └ auto:false repairs are never written, only suggested
+                              ├ auto:false repairs are never written, only suggested
+                              └ tripwires (added after the Groq run): a "no error" goes to a teacher if the
+                                blind solve confidently disagrees with the key, and so does a "display issue"
+                                on a record the scanners show is broken
 ```
 
 The model never writes to a question. It proposes a `{field, find, replace}`, and code decides. I also ran all 43 questions through stages 1 to 3, not only the 39 that were reported. That's where the 22 unreported findings in `unreported_findings.json` come from.
@@ -198,6 +201,8 @@ The console mislabelled R005. The integer key fix (2 to 1) showed up as "stored 
 
 Groq's first live answer didn't match what the gate expected. On the first live run, Groq wrote the solution's conclusion as "50 V" instead of the option letter "A". The gate compared them literally, so a correct key fix (C to A on the LCR question) went to faculty review instead of being applied. The prompt allows "option letter or value", so the gate was the thing to fix. It now maps a value to the option whose text matches it, and there's a test for it. It was a safe failure, because the gate only ever downgrades. But it showed me the gate has to be tested against real model output, not only against outputs I'd written by hand.
 
+Groq missed a wrong key, and my gate couldn't see it. On R004 the auditor said "no error" while its own blind solve said D and the key said A. The gate only ever downgrades a route, so a defect the model misses just passes through as closed. I added two plain-code tripwires. If a confident blind solve picks a different valid answer than the key, the report goes to a teacher whatever the auditor said. And if the auditor says "display issue" but the scanners find raw LaTeX, a missing figure or broken math in the stored record, it also goes to a teacher. That second one catches R014 and R025. Neither changes any hand-run result, and both have tests.
+
 ## 5. Design decisions
 
 ### The engine
@@ -263,4 +268,26 @@ That's fine for reported questions, but too much to run blind over all 8 lakh. S
 
 ## 6. Groq live run compared with the hand-run stages
 
-GROQ_COMPARISON_PENDING
+The committed results come from stage outputs written in the Claude Code session (`engine/cache/`). I also ran the same prompts live on Groq's free tier (`openai/gpt-oss-120b`) to see how a cheaper model holds up. Its outputs are in `engine/cache_groq/`, and you can rebuild them with `RF_CACHE_DIR=engine/cache_groq python -m engine.pipeline`.
+
+The free tier's daily token limit got in the way. After 40 of the 43 questions, each call was taking 25 to 35 minutes, so I stopped the run and finished the last three the next day with a new key. All 43 questions and all 44 reports have a Groq result.
+
+Groq agreed with the hand-run verdict on 38 of the 44 reports and the route on 35. The disagreements split into two groups.
+
+Groq was more careful on five, and the gate sent all of them to a teacher:
+
+- R032: Groq called the report a defect because the solution stops at 0.08 m while the question asks for cm. I'd marked the student's report "no error" and filed the same "= 8 cm" fix as a separate finding, so we spotted the same problem and filed it differently.
+
+- R005: the solution ends at "q/(2ε₀)", which Groq didn't turn into n = 1, so the "solution agrees with the new key" check failed.
+- R020: Groq quoted the stored key wrongly in `find`, so the exact-match check refused it.
+- R006: Groq said "defect" but proposed no concrete edit.
+- R024: Groq tried to put "20 N" in an integer answer field. The gate blocked it twice, once for the wrong field and once for a non-numeric integer answer.
+
+Groq was less careful on five, which is the direction that hurts students:
+
+- R004: Groq said "no error" even though its own blind solve came out D and the key is A. That's a wrong key staying live.
+- R014 and R025: Groq called these display issues. They're broken records: raw `\frac` sits in the stored HTML, and the stem says "as shown in figure" with no image attached.
+- R026: Groq said evolution is in the NEET syllabus. That's a fair judgement call, and the question itself is correct either way.
+- R034: Groq marked the report "no error", but it listed the same question as unsound in its own findings, so it still reaches a teacher.
+
+R004, R014 and R025 showed me a hole in my gate, and I've written it up in section 4. It also answers whether Groq is "just as good". The pipeline stays safe on Groq because the plain-code checks catch its mistakes. But it misses more real defects and sends more to faculty (15 reports against 10), so for real use I'd still run Claude. Groq also found 19 unreported problems, against 22 in the hand run, including the same kind of stray `&` and spelling slips.

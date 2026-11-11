@@ -13,7 +13,6 @@ from __future__ import annotations
 
 import json
 import os
-import sqlite3
 import urllib.request
 from contextlib import closing
 from pathlib import Path
@@ -36,6 +35,8 @@ class SqliteStore:
     name = "sqlite"
 
     def __init__(self, path):
+        import sqlite3  # imported here: some serverless Python builds ship without it
+        self._sqlite = sqlite3
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with closing(self._db()) as db:
@@ -44,7 +45,7 @@ class SqliteStore:
                 create table if not exists log (seq integer primary key autoincrement, body text not null);""")
 
     def _db(self):
-        return sqlite3.connect(self.path, timeout=10, isolation_level=None)
+        return self._sqlite.connect(self.path, timeout=10, isolation_level=None)
 
     def snapshot(self) -> dict:
         with closing(self._db()) as db:
@@ -73,6 +74,28 @@ class SqliteStore:
                 if db.in_transaction:
                     db.execute("rollback")
                 raise
+
+
+class MemoryStore:
+    """Same contract, in process memory. Used by the tests (and handy for a throwaway demo)."""
+    name = "memory"
+
+    def __init__(self):
+        self.decisions, self.log = {}, []
+
+    def snapshot(self) -> dict:
+        return {"decisions": json.loads(json.dumps(self.decisions)), "log": json.loads(json.dumps(self.log[-LOG_LIMIT:]))}
+
+    def swap(self, item_id: str, expect_at: str, new: dict | None, entry: dict):
+        cur = self.decisions.get(item_id)
+        if (cur["at"] if cur else "") != (expect_at or ""):
+            return False, cur
+        if new is None:
+            self.decisions.pop(item_id, None)
+        else:
+            self.decisions[item_id] = new
+        self.log.append(entry)
+        return True, new
 
 
 class RedisRestStore:

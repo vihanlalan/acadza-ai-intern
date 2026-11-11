@@ -40,6 +40,24 @@ class Gate(unittest.TestCase):
         # a value that matches no option is NOT treated as agreement
         self.assertEqual(gate(prop(), V[LCR], TAX, SOLVE_A, "55 V", [])["route"], "faculty_review")
 
+    def test_missed_wrong_key_trips_to_human(self):
+        # regression: Groq's auditor called R004 "no_error" although its own blind solve said D and the key is A
+        no_err = {"verdict": "no_error", "repair": None, "edit": None, "route_request": "no_change", "confidence": 0.99}
+        g = gate(no_err, V[LCR], TAX, {"final_answer": "A", "confidence": 0.99}, None, [])  # key C, solve A
+        self.assertEqual((g["verdict"], g["route"], g["edit"]), ("no_error", "faculty_review", None))
+        # agreeing, unsure or unparseable solves leave a non-defect closed
+        for s in ({"final_answer": "C", "confidence": 0.99}, {"final_answer": "A", "confidence": 0.6},
+                  {"final_answer": "none of the options", "confidence": 0.99}, None):
+            self.assertEqual(gate(no_err, V[LCR], TAX, s, None, [])["route"], "no_change", s)
+
+    def test_display_issue_on_broken_record_trips_to_human(self):
+        # regression: Groq called R014 (raw \frac in the stored HTML) a display issue
+        r014 = next(r for r in REPORTS if r["reportId"] == "R014")
+        disp = {"verdict": "display_issue", "repair": None, "edit": None, "route_request": "no_change", "confidence": 0.99}
+        self.assertEqual(gate(disp, V[r014["questionId"]], TAX, None, None, [])["route"], "faculty_review")
+        r036 = next(r for r in REPORTS if r["reportId"] == "R036")  # clean record: a real display issue stays closed
+        self.assertEqual(gate(disp, V[r036["questionId"]], TAX, None, None, [])["route"], "no_change")
+
     def test_key_flip_without_solution_agreement_goes_to_human(self):
         g = gate(prop(), V[LCR], TAX, SOLVE_A, "C", [])
         self.assertEqual(g["route"], "faculty_review")
