@@ -1,0 +1,780 @@
+{
+ "60ca4feb6420652745f55522": {
+  "output": {
+   "final_answer": "C",
+   "value": "99 N",
+   "working": "F' = k(1.1q1)(0.9q2)/r^2 = 0.99 F = 99 N",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68dea616d0cda73d07e93ae6": {
+  "output": {
+   "final_answer": "1",
+   "value": "n = 1",
+   "working": "Face-centre charge q/2: half its flux leaves the cube -> q/(4e0). Corner charge 2q: 1/8 of its flux -> q/(4e0). Total q/(2e0) = nq/(2e0) -> n = 1",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68dea715387eea3d0d95f790": {
+  "output": {
+   "final_answer": "3113",
+   "value": "10A = 3113",
+   "working": "6 x 7.203^2 = 311.299 m^2 -> 4 significant figures (as in 7.203) -> 311.3; 10A = 3113",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "61ee6c9d90a1a968a168686b": {
+  "output": {
+   "final_answer": "B",
+   "value": "Peyer's patches",
+   "working": "Lymphoid aggregates in the ileum wall are Peyer's patches",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68c9ae5afb6b2f16e2d43b1c": {
+  "output": {
+   "final_answer": "D",
+   "value": "1.1 V",
+   "working": "E = 12400/4000 = 3.1 eV; eV0 = 3.1 - 2.0 = 1.1 eV -> V0 = 1.1 V",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68dea87d387eea3d0d95fbe3": {
+  "output": {
+   "final_answer": "A",
+   "value": "5 V",
+   "working": "Charge conserved: C V0 = (aV)C V + C V -> V^2 + V - 30 = 0 -> (V+6)(V-5)=0 -> V = 5 V",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "696a866665252c04fc1f81c2": {
+  "output": {
+   "final_answer": "unknown",
+   "value": "depends on edge a",
+   "working": "dV = (P/B) V = 5e-5 a^3. The cube's size is not given, so the volume change cannot be computed.",
+   "stem_complete": false,
+   "missing": "Edge length (or volume) of the copper cube",
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.9
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "63c7cce12981ed154ee92c94": {
+  "output": {
+   "final_answer": "C",
+   "value": "2.2 uA",
+   "working": "C = K e0 A/d = 10 x 8.85e-12 x 1/1e-3 = 8.85e-8 F; Id = C dV/dt = 8.85e-8 x 25 = 2.2e-6 A",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "mismatch",
+   "suggested_chapter": "Physics - Electromagnetic Waves (displacement current)",
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68dea619d0cda73d07e93aee": {
+  "output": {
+   "final_answer": "4",
+   "value": "4 s",
+   "working": "Relative angular acceleration pi/2 - pi/4 = pi/4. Aligned again when relative angle = 2 pi: 2 pi = (1/2)(pi/4) t^2 -> t = 4 s",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68e872546e45ba37dcc16bc0": {
+  "output": {
+   "final_answer": "C",
+   "value": "1 : 1",
+   "working": "Newton's third law: the two charges exert equal and opposite forces -> ratio 1:1. No visible option says 1:1; option (C) is blank.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "correct_option_not_visible",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.97
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "66fe9dbe22132e5a70a3e579": {
+  "output": {
+   "final_answer": "D",
+   "value": "Relaxin - Inhibin",
+   "working": "PTH/calcitonin, insulin/glucagon and aldosterone/ANF are antagonistic pairs. Relaxin (softens pelvic ligaments) and inhibin (inhibits FSH) act on unrelated targets, so they are not antagonistic.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "620e23cecc50543bc7db9186": {
+  "output": {
+   "final_answer": "B",
+   "value": "outgroup comparison",
+   "working": "Ancestral state is inferred by comparison with an outgroup - a more distantly related snake.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "mismatch",
+   "suggested_chapter": "Cladistics / outgroup analysis is not in the NCERT NEET Evolution chapter",
+   "confidence": 0.85
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "6208e80a9cb2ab67dac61bd0": {
+  "output": {
+   "final_answer": "C",
+   "value": "more green light",
+   "working": "Understorey plants receive light filtered by the canopy, depleted in red and blue, enriched in green, which is poorly used in photosynthesis.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68dea657387eea3d0d95f54a": {
+  "output": {
+   "final_answer": "5",
+   "value": "5 D",
+   "working": "u = -12.5 cm, real image m = -4 -> v = +50 cm; 1/f = 1/50 + 1/12.5 = 1/10 -> f = 10 cm, P = 10 D; each lens 5 D",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "61dffbec08489156b684bd22": {
+  "output": {
+   "final_answer": "A",
+   "value": "Epithelial tissue",
+   "working": "The intestinal lining is columnar epithelium.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68e870ef42c06737d6e565c4": {
+  "output": {
+   "final_answer": "D",
+   "value": "4800 N/m^2",
+   "working": "P = (1/3) rho v_rms^2 = (1/3)(9e-2)(400)^2 = 4800 N/m^2",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.98
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68e8734442c06737d6e56da4": {
+  "output": {
+   "final_answer": "A",
+   "value": "0.8",
+   "working": "m = 10 kg. F - 100 mu = 10(1); 2F - 100 mu = 10(10) -> F = 90 N, mu = 0.8",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.97
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "6956d79788d7701e5617bc29": {
+  "output": {
+   "final_answer": "B",
+   "value": "0 W",
+   "working": "phi = 90 deg -> P = Vrms Irms cos 90 = 0. Options (B) and (C) are both '0 W', so two options are correct.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "multiple_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "695ee00b88d7701e561aabc5": {
+  "output": {
+   "final_answer": "none",
+   "value": "A false, R false",
+   "working": "Equal amplitudes, phi = pi/2: I = I0 + I0 + 2 I0 cos(pi/2) = 2 I0 - twice one wave, so A is false. R ('always the sum if phase difference is non-zero') is false: the sum holds only when cos phi = 0. No option says 'both false'.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "none_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.93
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "622df25ab70e4b50e44ff837": {
+  "output": {
+   "final_answer": "B",
+   "value": "1 -> 2, bubble 1 shrinks",
+   "working": "Excess pressure 4T/R. Hemispherical bubble has the smallest radius r (highest pressure); sub-hemispherical has larger radius. Air flows 1 -> 2 and bubble 1 shrinks. The stem refers to a figure that is not attached.",
+   "stem_complete": false,
+   "missing": "The figure the stem refers to",
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.8
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "6208e298fa399567e0878700": {
+  "output": {
+   "final_answer": "A",
+   "value": "Julius von Sachs",
+   "working": "Sachs showed glucose is made in green parts and stored as starch.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "695ede2a88d7701e561aa9d9": {
+  "output": {
+   "final_answer": "D",
+   "value": "I correct, II incorrect",
+   "working": "Dialysis is a holding measure before transplant (I true) and IS a supportive measure for patients unfit for transplant, so Statement II (which says it is 'not') is false.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.85
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "612151a6a34397610a9a2e58": {
+  "output": {
+   "final_answer": "B",
+   "value": "16.8 eV",
+   "working": "K = h^2/(2 m lambda^2) = (6.63e-34)^2 / (2 x 9.11e-31 x (3e-10)^2) = 2.68e-18 J = 16.8 eV",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.96
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "60f742f6660d187cc13a8078": {
+  "output": {
+   "final_answer": "unknown",
+   "value": "needs L",
+   "working": "Z = sqrt(R^2 + (2 pi f L)^2). L is not given, so Z cannot be found.",
+   "stem_complete": false,
+   "missing": "Value of the inductance L",
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.9
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68f21df0941cda588bc0470b": {
+  "output": {
+   "final_answer": "A",
+   "value": "p doubles",
+   "working": "p = sqrt(2mK); K x4 -> p x2",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "6264197209f4fd65f58f5707": {
+  "output": {
+   "final_answer": "C",
+   "value": "Golden rice",
+   "working": "Golden rice makes beta-carotene (provitamin A).",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "617fa18efd53ff1629ed890f": {
+  "output": {
+   "final_answer": "D",
+   "value": "Lamina",
+   "working": "The lamina (leaf blade) is the green expanded part with veins and veinlets.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "6062ec84518e9535e120c422": {
+  "output": {
+   "final_answer": "A",
+   "value": "5.7e-5 /degC",
+   "working": "alpha = 0.19/(100 x 100) = 1.9e-5 /degC; gamma = 3 alpha = 5.7e-5 /degC",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.98
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "5fc60508028950133eac8963": {
+  "output": {
+   "final_answer": "20",
+   "value": "20 N",
+   "working": "Weight 20 N < limiting friction 0.3 x 100 = 30 N, so static friction = 20 N. The unit of the expected integer is not stated.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68dea6e6387eea3d0d95f6f8": {
+  "output": {
+   "final_answer": "16",
+   "value": "16",
+   "working": "x = sqrt(D(D-4f)) = sqrt(150 x 54) = 90; ratio = ((D+x)/(D-x))^2 = (240/60)^2 = 16",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68f21caf941cda588bc04365": {
+  "output": {
+   "final_answer": "B",
+   "value": "1.44 min",
+   "working": "N/N0 = 1/8 -> t/tau = ln 8 = 2.079 -> tau = 3/2.079 = 1.44 min. Only (B) is correct (C is ln 8 itself) -> single-correct.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "mismatch",
+   "suggested_chapter": "Physics - Nuclear physics and radioactivity",
+   "confidence": 0.96
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "60f744b3f1b9bc7cc7b4a949": {
+  "output": {
+   "final_answer": "A",
+   "value": "50 V",
+   "working": "V = sqrt(VR^2 + (VL - VC)^2) = sqrt(40^2 + 30^2) = 50 V",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68c801bc1b1dbc16dc93bf2b": {
+  "output": {
+   "final_answer": "A",
+   "value": "~600 eV",
+   "working": "lambda_min = hc/eV; h/sqrt(2mK) = hc/eV -> K = (eV)^2/(2mc^2) = (24800)^2/(2 x 511000) eV = 602 eV",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68dea577d0cda73d07e9391c": {
+  "output": {
+   "final_answer": "14",
+   "value": "14 V",
+   "working": "V = kQ/R = 16 V. V_P (r = R/2) = kQ(3R^2 - R^2/4)/(2R^3) = 11V/8 = 22 V; V_S (2R) = V/2 = 8 V; V_P - V_S = 14 V",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.97
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "636283dbe3770c24f866e6d6": {
+  "output": {
+   "final_answer": "B",
+   "value": "4 : 1",
+   "working": "R = 4r, Q = 64q -> sigma_big/sigma_small = (Q/q)(r/R)^2 = 64/16 = 4",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.97
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "6263d75bdd44e265ef926d97": {
+  "output": {
+   "final_answer": "20",
+   "value": "20 cm",
+   "working": "Extra buoyancy of the 2 cm layer = 800 g: a^2 x 2 x 1 = 800 -> a = 20 cm",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.97
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "622f08d7b70e4b50e4500a1b": {
+  "output": {
+   "final_answer": "C",
+   "value": "10 m/s",
+   "working": "v_cm = (10 x 14 + 4 x 0)/14 = 10 m/s. Only options A-C are present.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.98
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "63765a28f1d8416ae0408d89": {
+  "output": {
+   "final_answer": "C",
+   "value": "180 days",
+   "working": "1/8 remains -> 3 half-lives -> 180 days",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68c8153cfb6b2f16e2d3ceaf": {
+  "output": {
+   "final_answer": [
+    "A",
+    "B",
+    "D"
+   ],
+   "value": "A, B, D",
+   "working": "A: straight line (force parallel to u). B: parabola. C: false - parallel to B means no magnetic force, straight line not a helix. D: circle in plane normal to B.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "multiple_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "6956d7e988d7701e5617bd3e": {
+  "output": {
+   "final_answer": "D",
+   "value": "8 sqrt2 m",
+   "working": "x = A sin wt, v = A w cos wt; w = pi/8, t = 2 -> wt = pi/4; pi = A(pi/8)(1/sqrt2) -> A = 8 sqrt2 m",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.97
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "6956d7bb23cb221e570d6013": {
+  "output": {
+   "final_answer": "B",
+   "value": "tan^-1(4)",
+   "working": "u^2 sin^2(th)/2g = 2u^2 sin(th) cos(th)/g -> tan th = 4",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.98
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68dea7c2387eea3d0d95f9bb": {
+  "output": {
+   "final_answer": "8",
+   "value": "8 cm",
+   "working": "shift = (D/d)[t1(mu1-1) - t2(mu2-1)] = 200 x (1.0e-3 - 0.6e-3) = 0.08 m = 8 cm",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.97
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ },
+ "68ecbacb2ec87a18deba1ad7": {
+  "output": {
+   "final_answer": "B",
+   "value": "Na+ channel inactivation",
+   "working": "Absolute refractory period comes from voltage-gated Na+ channel inactivation.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "mismatch",
+   "suggested_chapter": "Zoology - Neural Control and Coordination",
+   "confidence": 0.95
+  },
+  "meta": {
+   "provider": "claude-code-session",
+   "model": "claude-opus-5-5 (run by hand in Claude Code; no API key in build env)",
+   "prompt_version": "v3"
+  }
+ }
+}

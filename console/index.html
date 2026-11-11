@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Report → Fix · Faculty console</title>
+<meta name="description" content="Review AI-triaged student error reports on JEE/NEET questions: what changed, why, and one-click approve / edit / reject with an audit trail.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23155e4b'/%3E%3Cpath d='M9 17l4.5 4.5L23 11' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true"></span>
+    <div>
+      <div class="brand-name">Report → Fix</div>
+      <div class="brand-sub">Faculty review console</div>
+    </div>
+  </div>
+  <nav class="lanes" id="lanes" role="tablist" aria-label="Queues"></nav>
+  <div class="top-right">
+    <div class="progress" id="progress" title="Decisions made on items that need a faculty decision"></div>
+    <button class="icon-btn" id="btn-log" title="Audit log (L)">Audit log <span class="count" id="log-count">0</span></button>
+    <button class="icon-btn" id="btn-help" title="Keyboard shortcuts (?)">?</button>
+    <button class="icon-btn" id="btn-theme" title="Toggle dark mode" aria-label="Toggle dark mode">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="queue" aria-label="Question queue">
+    <div class="queue-tools">
+      <input id="search" type="search" placeholder="Search id, chapter, comment…  ( / )" autocomplete="off">
+      <div class="subject-pills" id="subjects"></div>
+      <details class="why-order">
+        <summary>How this queue is ordered</summary>
+        <p><b>Most urgent = most harm to students right now.</b> Score = defect severity × (1 + ln(1 + reports)), plus a bump while a human decision is still pending.</p>
+        <p>Severity: wrong / malformed key 10 · wrong type 9 · no valid answer 9 · missing data or option 8 · missing figure 7 · duplicate options 7 · wrong solution step 6 · unit not stated 4 · notation / markup 3 · wrong chapter 3 · syllabus 2 · spelling, noise, exam tag 1.</p>
+        <p>A wrong key marks every correct student wrong; a typo only slows them down. Duplicate reports raise the score, but with diminishing returns, so one loud question can't bury a silent broken key.</p>
+      </details>
+    </div>
+    <ol class="queue-list" id="queue"></ol>
+  </aside>
+
+  <main class="workspace" id="workspace" tabindex="-1"></main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>Audit log</h2>
+    <div class="drawer-actions">
+      <label class="reviewer">Reviewer <input id="reviewer" maxlength="40"></label>
+      <button class="btn ghost" id="btn-export">Export JSON</button>
+      <button class="btn ghost" id="btn-close-drawer" aria-label="Close">✕</button>
+    </div>
+  </div>
+  <p class="drawer-note">Append-only. Undo adds an entry instead of deleting one. Stored in this browser; export to hand over.</p>
+  <ol class="log" id="log"></ol>
+</div>
+
+<div class="modal" id="help" aria-hidden="true">
+  <div class="modal-card">
+    <h2>Keyboard</h2>
+    <dl class="keys">
+      <dt><kbd>J</kbd> / <kbd>K</kbd></dt><dd>Next / previous question</dd>
+      <dt><kbd>A</kbd></dt><dd>Approve the highlighted item</dd>
+      <dt><kbd>R</kbd></dt><dd>Reject / roll back / reopen</dd>
+      <dt><kbd>E</kbd></dt><dd>Edit the fix or the student reply, then approve</dd>
+      <dt><kbd>N</kbd></dt><dd>Next item inside this question</dd>
+      <dt><kbd>S</kbd></dt><dd>Rendered ↔ source diff</dd>
+      <dt><kbd>U</kbd></dt><dd>Undo last decision</dd>
+      <dt><kbd>1</kbd>–<kbd>4</kbd></dt><dd>Switch queue</dd>
+      <dt><kbd>/</kbd></dt><dd>Search</dd>
+      <dt><kbd>L</kbd></dt><dd>Audit log</dd>
+    </dl>
+    <button class="btn" id="btn-close-help">Got it</button>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+{
+ "60f744b3f1b9bc7cc7b4a949": {
+  "output": {
+   "final_answer": "A",
+   "value": "50 V",
+   "working": "Supply voltage is the phasor sum: V_X=V_L-V_C=60-30=30 V (reactive component). V_s=√(V_R^2+V_X^2)=√(40^2+30^2)=√2500=50 V.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 3.0
+  }
+ },
+ "60ca4feb6420652745f55522": {
+  "output": {
+   "final_answer": "C",
+   "value": "99 N",
+   "working": "F'= (1+0.10)(1-0.10)F =0.99×100 N =99 N.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 1.0
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 2.6
+  }
+ },
+ "68dea616d0cda73d07e93ae6": {
+  "output": {
+   "final_answer": "1",
+   "value": "1",
+   "working": "Flux from q/2 at face centre = (1/2)*(q/2)/ε0 = q/(4ε0). Flux from 2q at corner = (1/8)*(2q)/ε0 = q/(4ε0). Total flux = q/(2ε0) = (n q)/(2ε0) ⇒ n=1.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 5.5
+  }
+ },
+ "68dea715387eea3d0d95f790": {
+  "output": {
+   "final_answer": "3113",
+   "value": "3113",
+   "working": "Side s=7.203 m (4 s.f.). Surface area A=6s^2=6×(7.203)^2=6×51.883209=311.299254 m^2. Round to 4 s.f. (same as s) → A=311.3 m^2. Then 10A=10×311.3=3113.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.96
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 14.7
+  }
+ },
+ "61ee6c9d90a1a968a168686b": {
+  "output": {
+   "final_answer": "B",
+   "value": "Peyer's patches",
+   "working": "Peyer's patches are aggregates of lymphoid tissue located in the distal small intestine (ileum). The other options (villi, rugae, choroid plexus) are not lymphoid structures.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 12.7
+  }
+ },
+ "68c9ae5afb6b2f16e2d43b1c": {
+  "output": {
+   "final_answer": "D",
+   "value": "1.1 V",
+   "working": "Photon energy E = hc/λ = (6.626×10⁻³⁴·3×10⁸)/(4×10⁻⁷) ≈ 4.97×10⁻¹⁹ J ≈ 3.1 eV. Max kinetic energy Kₘₐₓ = E − φ = 3.1 eV − 2.0 eV = 1.1 eV, so stopping potential Vₛ = Kₘₐₓ/e = 1.1 V.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 19.1
+  }
+ }
+}

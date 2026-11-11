@@ -1,0 +1,199 @@
+{
+ "60f744b3f1b9bc7cc7b4a949": {
+  "output": {
+   "solution_concludes": "50 V",
+   "reports": {
+    "R002": {
+     "verdict": "defect",
+     "repair": "answer_key",
+     "edit": {
+      "field": "answer",
+      "find": "C",
+      "replace": "A"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "Solution gives 50 V which is option A, but key is C",
+     "student_reply": "You are right, the correct answer is A (50 V). Thank you for spotting the mistake."
+    },
+    "R003": {
+     "verdict": "defect",
+     "repair": "answer_key",
+     "edit": {
+      "field": "answer",
+      "find": "C",
+      "replace": "A"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "Solution gives 50 V which is option A, but key is C",
+     "student_reply": "Correct, the answer should be A (50 V). We appreciate your vigilance."
+    },
+    "R001": {
+     "verdict": "defect",
+     "repair": "answer_key",
+     "edit": {
+      "field": "answer",
+      "find": "C",
+      "replace": "A"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "Solution computes √(40²+30²)=50 V matching option A, while key lists C",
+     "student_reply": "Exactly, the key was wrong – the right choice is A (50 V). Thanks for letting us know."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 2.3
+  }
+ },
+ "60ca4feb6420652745f55522": {
+  "output": {
+   "solution_concludes": "99 N",
+   "reports": {
+    "R036": {
+     "verdict": "display_issue",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "All four options exist in the stored HTML, but on a small phone screen they are truncated, causing the cut‑off view.",
+     "student_reply": "We understand the options are getting cut off on your phone. Our team will adjust the layout so every choice is fully visible."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 1.9
+  }
+ },
+ "68dea616d0cda73d07e93ae6": {
+  "output": {
+   "solution_concludes": "q/(2 ε0)",
+   "reports": {
+    "R005": {
+     "verdict": "defect",
+     "repair": "answer_key",
+     "edit": {
+      "field": "answer",
+      "find": "2",
+      "replace": "1"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "The solution ends with total flux = q/(2 ε₀), which equals (n q)/(2 ε₀) ⇒ n=1.",
+     "student_reply": "Thanks for flagging it – the correct value of n is 1, not 2."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 41.4
+  }
+ },
+ "68dea715387eea3d0d95f790": {
+  "output": {
+   "solution_concludes": "311.3",
+   "reports": {
+    "R033": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "6×(7.203)^2=311.299 → 311.3 (4 s.f.); 10×311.3=3113",
+     "student_reply": "Your calculation missed the rounding step. The area 311.299 rounds to 311.3 with four significant figures, and multiplying by 10 gives 3113. The stored answer is correct."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 34.2
+  }
+ },
+ "61ee6c9d90a1a968a168686b": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R022": {
+     "verdict": "defect",
+     "repair": "spelling",
+     "edit": {
+      "field": "question",
+      "find": "plexux",
+      "replace": "plexus"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.98,
+     "evidence": "Option D contains the misspelled word 'plexux' instead of 'plexus'.",
+     "student_reply": "You are right, the word should be 'plexus'. Thanks for pointing it out."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "spelling",
+     "edit": {
+      "field": "solution",
+      "find": "prominant",
+      "replace": "prominent"
+     },
+     "confidence": 0.97,
+     "evidence": "The solution text has 'prominant' instead of 'prominent'."
+    },
+    {
+     "repair": "spelling",
+     "edit": {
+      "field": "solution",
+      "find": "Maceus",
+      "replace": "Mucous"
+     },
+     "confidence": 0.96,
+     "evidence": "The solution text misspells 'Maceus' which should be 'Mucous'."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 27.9
+  }
+ },
+ "68c9ae5afb6b2f16e2d43b1c": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R037": {
+     "verdict": "display_issue",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "The report mentions slow loading; the question content and answer are correct.",
+     "student_reply": "We understand the page was loading slowly; the question itself is fine. Thank you for letting us know."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 23.8
+  }
+ }
+}
