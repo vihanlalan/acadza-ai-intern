@@ -173,32 +173,33 @@ def _check_replies(it, replies):
     return replies
 
 
+class ApiHandler(BaseHTTPRequestHandler):
+    """Request handler for Vercel's Python runtime (api/*.py subclass it as `handler`) and the local server."""
+
+    def do_GET(self):
+        self._api("GET")
+
+    def do_POST(self):
+        self._api("POST")
+
+    def _api(self, method):
+        u = urlsplit(self.path)
+        n = int(self.headers.get("Content-Length") or 0)
+        body = self.rfile.read(min(n, MAX_BODY + 1)) if n else b""
+        try:
+            status, extra, payload = handle(method, u.path, parse_qs(u.query), self.headers, body)
+        except Exception as e:  # never leak a stack trace to the browser
+            status, extra, payload = 500, {}, {"error": f"server error: {type(e).__name__}"}
+        out = json.dumps(payload, ensure_ascii=False).encode()
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Cache-Control", "no-store")
+        for k, v in extra.items():
+            self.send_header(k, v)
+        self.send_header("Content-Length", str(len(out)))
+        self.end_headers()
+        self.wfile.write(out)
+
+
 def make_handler():
-    """BaseHTTPRequestHandler class for Vercel's Python runtime (and the local server)."""
-
-    class Handler(BaseHTTPRequestHandler):
-        def do_GET(self):
-            self._api("GET")
-
-        def do_POST(self):
-            self._api("POST")
-
-        def _api(self, method):
-            u = urlsplit(self.path)
-            n = int(self.headers.get("Content-Length") or 0)
-            body = self.rfile.read(min(n, MAX_BODY + 1)) if n else b""
-            try:
-                status, extra, payload = handle(method, u.path, parse_qs(u.query), self.headers, body)
-            except Exception as e:  # never leak a stack trace to the browser
-                status, extra, payload = 500, {}, {"error": f"server error: {type(e).__name__}"}
-            out = json.dumps(payload, ensure_ascii=False).encode()
-            self.send_response(status)
-            self.send_header("Content-Type", "application/json; charset=utf-8")
-            self.send_header("Cache-Control", "no-store")
-            for k, v in extra.items():
-                self.send_header(k, v)
-            self.send_header("Content-Length", str(len(out)))
-            self.end_headers()
-            self.wfile.write(out)
-
-    return Handler
+    return ApiHandler
