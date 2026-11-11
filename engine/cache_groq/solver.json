@@ -112,5 +112,24 @@
    "prompt_version": "v3",
    "seconds": 19.1
   }
+ },
+ "68dea87d387eea3d0d95fbe3": {
+  "output": {
+   "final_answer": "A",
+   "value": "5 V",
+   "working": "Initially only the vacuum capacitor has charge Q=C0*V0 (C0 is empty capacitance). After parallel connection, both have same voltage V_f. Dielectric-filled capacitor has C1=K*C0=α V_f*C0 (α=1 V^{-1}), so Q1=α C0 V_f^2. Vacuum capacitor Q2=C0 V_f. Charge conservation: C0 V0 = C0 V_f + α C0 V_f^2 → V0 = V_f(1+α V_f). With V0=30 V, α=1 → V_f^2+V_f-30=0 → V_f=5 V (positive root).",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 21.3
+  }
  }
 }
