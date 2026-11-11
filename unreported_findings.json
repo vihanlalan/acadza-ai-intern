@@ -1,0 +1,397 @@
+[
+ {
+  "findingId": "F686b-1",
+  "questionId": "61ee6c9d90a1a968a168686b",
+  "reported": true,
+  "repair": "spelling",
+  "edit": [
+   {
+    "field": "solution",
+    "find": "prominant",
+    "replace": "prominent"
+   },
+   {
+    "field": "solution",
+    "find": "Maceus membrane",
+    "replace": "Mucous membrane"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 0.93,
+  "evidence": "Solution has 'prominant' and 'Maceus membrane' (should be 'prominent', 'Mucous membrane')."
+ },
+ {
+  "findingId": "Ffbe3-1",
+  "questionId": "68dea87d387eea3d0d95fbe3",
+  "reported": false,
+  "repair": "spelling",
+  "edit": {
+   "field": "solution",
+   "find": "Let the final potential drop across each capacitor is V",
+   "replace": "Let the final potential drop across each capacitor be V"
+  },
+  "route": "auto_apply",
+  "confidence": 0.85,
+  "evidence": "Grammar slip in the first line of the solution. Key (A) 5 V verified independently."
+ },
+ {
+  "findingId": "Fe579-1",
+  "questionId": "66fe9dbe22132e5a70a3e579",
+  "reported": true,
+  "repair": "solution_fix",
+  "edit": {
+   "field": "solution",
+   "find": "Insulin and glucagon work synergistically to keep",
+   "replace": "Insulin and glucagon work antagonistically to keep"
+  },
+  "route": "auto_apply",
+  "confidence": 0.92,
+  "evidence": "Solution says insulin and glucagon act 'synergistically'; they are the textbook antagonistic pair, and this sentence contradicts the question's logic."
+ },
+ {
+  "findingId": "Fe579-2",
+  "questionId": "66fe9dbe22132e5a70a3e579",
+  "reported": true,
+  "repair": "noise",
+  "edit": [
+   {
+    "field": "question",
+    "find": "<h3><ol>\n\t<li>",
+    "replace": "<h3>"
+   },
+   {
+    "field": "question",
+    "find": "</li></h3>",
+    "replace": "</h3>"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 0.88,
+  "evidence": "Stray <ol><li> wrapper makes the stem render as list item '1.'."
+ },
+ {
+  "findingId": "Fe579-3",
+  "questionId": "66fe9dbe22132e5a70a3e579",
+  "reported": true,
+  "repair": "noise",
+  "edit": [
+   {
+    "field": "solution",
+    "find": "<h3><ol>\n\t<li>",
+    "replace": "<h3>"
+   },
+   {
+    "field": "solution",
+    "find": "</li>\n</ol></h3>",
+    "replace": "</h3>"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 0.85,
+  "evidence": "Same stray <ol><li> wrapper in the solution."
+ },
+ {
+  "findingId": "F9186-1",
+  "questionId": "620e23cecc50543bc7db9186",
+  "reported": true,
+  "repair": "spelling",
+  "edit": {
+   "field": "solution",
+   "find": "wheater",
+   "replace": "whether"
+  },
+  "route": "auto_apply",
+  "confidence": 0.95,
+  "evidence": "Solution has 'wheater'."
+ },
+ {
+  "findingId": "Ff54a-1",
+  "questionId": "68dea657387eea3d0d95f54a",
+  "reported": false,
+  "repair": "notation",
+  "edit": [
+   {
+    "field": "solution",
+    "find": "<mtext> eqcu </mtext>",
+    "replace": "<mtext> each </mtext>"
+   },
+   {
+    "field": "solution",
+    "find": "<mtext> eqch </mtext>",
+    "replace": "<mtext> each </mtext>"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 0.88,
+  "evidence": "Subscripts render as 'P_eqcu' and 'P_eqch'; they mean P_each ('10 D = 2 P_each', 'P_each = 5 D'). Key 5 verified."
+ },
+ {
+  "findingId": "Fbc29-1",
+  "questionId": "6956d79788d7701e5617bc29",
+  "reported": true,
+  "repair": "markup_leak",
+  "edit": [
+   {
+    "field": "solution",
+    "find": "<mi>&amp;</mi><mi>P</mi>",
+    "replace": "<mi>P</mi>"
+   },
+   {
+    "field": "solution",
+    "find": "<mi>&amp;</mi><mi>ϕ</mi>",
+    "replace": "<mi>ϕ</mi>"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 0.9,
+  "evidence": "Solution shows two literal '&' alignment markers ('&P = ...', '&phi = 90')."
+ },
+ {
+  "findingId": "Fabc5-1",
+  "questionId": "695ee00b88d7701e561aabc5",
+  "reported": true,
+  "repair": "solution_fix",
+  "edit": null,
+  "route": "faculty_review",
+  "confidence": 0.9,
+  "evidence": "Solution uses I = 2 I0 cos^2(phi/2) (should be 4 I0 cos^2(phi/2)) and contradicts itself; rewrite after faculty fix the options."
+ },
+ {
+  "findingId": "Ff837-1",
+  "questionId": "622df25ab70e4b50e44ff837",
+  "reported": true,
+  "repair": "spelling",
+  "edit": {
+   "field": "question",
+   "find": "hemispherial",
+   "replace": "hemispherical"
+  },
+  "route": "auto_apply",
+  "confidence": 0.95,
+  "evidence": "Stem says 'hemispherial'."
+ },
+ {
+  "findingId": "F5707-1",
+  "questionId": "6264197209f4fd65f58f5707",
+  "reported": true,
+  "repair": "spelling",
+  "edit": {
+   "field": "question",
+   "find": "Canolla",
+   "replace": "Canola"
+  },
+  "route": "auto_apply",
+  "confidence": 0.95,
+  "evidence": "Option (B) reads 'Canolla'; the solution itself spells it 'Canola'."
+ },
+ {
+  "findingId": "F5707-2",
+  "questionId": "6264197209f4fd65f58f5707",
+  "reported": true,
+  "repair": "spelling",
+  "edit": [
+   {
+    "field": "solution",
+    "find": "riceis",
+    "replace": "rice is"
+   },
+   {
+    "field": "solution",
+    "find": "producebeta",
+    "replace": "produce beta"
+   },
+   {
+    "field": "solution",
+    "find": "ofvitamin",
+    "replace": "of vitamin"
+   },
+   {
+    "field": "solution",
+    "find": "helpprevent",
+    "replace": "help prevent"
+   },
+   {
+    "field": "solution",
+    "find": "lead tonight blindness",
+    "replace": "lead to night blindness"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 0.92,
+  "evidence": "Missing spaces in the solution; 'lead tonight blindness' reads as a different word."
+ },
+ {
+  "findingId": "F890f-1",
+  "questionId": "617fa18efd53ff1629ed890f",
+  "reported": true,
+  "repair": "spelling",
+  "edit": {
+   "field": "question",
+   "find": "part of<span style=\"color:#000000\">leaf",
+   "replace": "part of <span style=\"color:#000000\">leaf"
+  },
+  "route": "auto_apply",
+  "confidence": 0.9,
+  "evidence": "Missing space renders as 'ofleaf' in the stem."
+ },
+ {
+  "findingId": "Fc422-1",
+  "questionId": "6062ec84518e9535e120c422",
+  "reported": true,
+  "repair": "notation",
+  "edit": [
+   {
+    "field": "solution",
+    "find": "<mo>&#x0002F;</mo><mrow><mi mathvariant=\"normal\">A</mi><mi mathvariant=\"normal\">C</mi></mrow>",
+    "replace": "<mo>&#x0002F;</mo><mo>&#x000B0;</mo><mi mathvariant=\"normal\">C</mi>"
+   },
+   {
+    "field": "solution",
+    "find": "<mn>3</mn><mi>a</mi>",
+    "replace": "<mn>3</mn><mi>&#x003B1;</mi>"
+   },
+   {
+    "field": "solution",
+    "find": "<mo>&#x0002F;</mo><mi>&#x00043;</mi>",
+    "replace": "<mo>&#x0002F;</mo><mo>&#x000B0;</mo><mi>&#x00043;</mi>"
+   },
+   {
+    "field": "solution",
+    "find": "<mrow><mi mathvariant=\"normal\">C</mi><mi mathvariant=\"normal\">C</mi></mrow>",
+    "replace": "<mo>&#x000B0;</mo><mi mathvariant=\"normal\">C</mi>"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 0.9,
+  "evidence": "Solution units are garbled: '/AC', '/C', '/CC' should all be '/°C', and 'gamma = 3a' should be '3 alpha'."
+ },
+ {
+  "findingId": "Fc422-2",
+  "questionId": "6062ec84518e9535e120c422",
+  "reported": true,
+  "repair": "spelling",
+  "edit": {
+   "field": "question",
+   "find": "It&rsquo;s length",
+   "replace": "Its length"
+  },
+  "route": "auto_apply",
+  "confidence": 0.9,
+  "evidence": "Stem says 'It's length' (should be 'Its')."
+ },
+ {
+  "findingId": "F8963-1",
+  "questionId": "5fc60508028950133eac8963",
+  "reported": true,
+  "repair": "spelling",
+  "edit": {
+   "field": "question",
+   "find": "The friction between wall and body is 0.3",
+   "replace": "The coefficient of friction between wall and body is 0.3"
+  },
+  "route": "auto_apply",
+  "confidence": 0.85,
+  "evidence": "Stem says 'the friction ... is 0.3' where it means the coefficient of friction; 0.3 is not a force."
+ },
+ {
+  "findingId": "Ff6f8-1",
+  "questionId": "68dea6e6387eea3d0d95f6f8",
+  "reported": false,
+  "repair": "notation",
+  "edit": {
+   "field": "solution",
+   "find": "<mi mathvariant=\"normal\"> D </mi><mi mathvariant=\"normal\"> F </mi>",
+   "replace": "<mi> D </mi><mi> f </mi>"
+  },
+  "route": "auto_apply",
+  "confidence": 0.85,
+  "evidence": "Solution writes x^2 = D^2 - 4DF with a capital F; the symbol defined is the focal length f. Key 16 verified."
+ },
+ {
+  "findingId": "F4365-1",
+  "questionId": "68f21caf941cda588bc04365",
+  "reported": true,
+  "repair": "wrong_chapter",
+  "edit": null,
+  "route": "faculty_review",
+  "confidence": 0.9,
+  "evidence": "Radioactive decay question is filed under 'Mathematics in physics'; it belongs in 'Nuclear physics and radioactivity'."
+ },
+ {
+  "findingId": "Fbf2b-1",
+  "questionId": "68c801bc1b1dbc16dc93bf2b",
+  "reported": true,
+  "repair": "markup_leak",
+  "edit": [
+   {
+    "field": "solution",
+    "find": "<mi>K</mi><mi>&</mi><mo>&#x0003D;</mo>",
+    "replace": "<mi>K</mi><mo>&#x0003D;</mo>"
+   },
+   {
+    "field": "solution",
+    "find": "<mi>K</mi><mi>&</mi><mo>&#x02248;</mo>",
+    "replace": "<mi>K</mi><mo>&#x02248;</mo>"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 0.9,
+  "evidence": "Two LaTeX alignment '&' characters show in the solution ('K & = ...')."
+ },
+ {
+  "findingId": "F0a1b-1",
+  "questionId": "622f08d7b70e4b50e4500a1b",
+  "reported": true,
+  "repair": "markup_leak",
+  "edit": [
+   {
+    "field": "solution",
+    "find": "</mrow></msub><mi>&</mi><mo>&#x0003D;</mo>",
+    "replace": "</mrow></msub><mo>&#x0003D;</mo>"
+   },
+   {
+    "field": "solution",
+    "find": "<mspace linebreak=\"newline\" /><mi>&</mi>",
+    "replace": "<mspace linebreak=\"newline\" />"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 0.9,
+  "evidence": "Two LaTeX alignment '&' characters render as visible text in the solution ('v_CM & = ...')."
+ },
+ {
+  "findingId": "Fbd3e-1",
+  "questionId": "6956d7e988d7701e5617bd3e",
+  "reported": true,
+  "repair": "notation",
+  "edit": [
+   {
+    "field": "solution",
+    "find": "<mi> v </mi><mo>&minus;</mo><mfrac>",
+    "replace": "<mi> v </mi><mo>=</mo><mfrac>"
+   },
+   {
+    "field": "solution",
+    "find": "</mfrac><mo>&minus;</mo><mi> A </mi><mi>&omega;</mi>",
+    "replace": "</mfrac><mo>=</mo><mi> A </mi><mi>&omega;</mi>"
+   }
+  ],
+  "route": "auto_apply",
+  "confidence": 0.88,
+  "evidence": "Solution writes 'v - dx/dt - A w cos wt'; both minus signs should be '='."
+ },
+ {
+  "findingId": "Ff9bb-1",
+  "questionId": "68dea7c2387eea3d0d95f9bb",
+  "reported": true,
+  "repair": "solution_fix",
+  "edit": {
+   "field": "solution",
+   "find": "</math>.</h3>",
+   "replace": "</math> = 8 cm.</h3>"
+  },
+  "route": "auto_apply",
+  "confidence": 0.88,
+  "evidence": "Solution ends at 0.08 m while the question asks for cm; adding '= 8 cm' removes the confusion that triggered R032."
+ }
+]

@@ -1,0 +1,3 @@
+[build]
+  command = "python3 -m engine.pipeline --check && python3 -m unittest engine.test_guards"
+  publish = "console"

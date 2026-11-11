@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "python3 --version",
+  "buildCommand": "python3 -m engine.pipeline --check && python3 -m unittest engine.test_guards",
+  "outputDirectory": "console"
+}
