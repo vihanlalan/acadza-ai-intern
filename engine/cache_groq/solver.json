@@ -131,5 +131,578 @@
    "prompt_version": "v3",
    "seconds": 21.3
   }
+ },
+ "696a866665252c04fc1f81c2": {
+  "output": {
+   "final_answer": "N/A",
+   "value": "N/A",
+   "working": "Bulk modulus K = -ΔP/(ΔV/V) ⇒ ΔV = -(ΔP/K)·V₀. Given ΔP=7×10⁶ Pa and K=1.4×10¹¹ Pa, ΔV/V₀ = ΔP/K = 5×10⁻⁵. The absolute contraction ΔV requires the initial volume V₀ of the cube, which is not provided in the stem, so the numerical value cannot be determined.",
+   "stem_complete": false,
+   "missing": "initial volume (or side length) of the copper cube",
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.63
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 25.5
+  }
+ },
+ "63c7cce12981ed154ee92c94": {
+  "output": {
+   "final_answer": "C",
+   "value": "2.2 μA",
+   "working": "C = ε0 εr A / d = (8.85×10⁻¹² F/m ×10 ×1 m²)/1×10⁻³ m = 8.85×10⁻⁸ F; I_d = C·dV/dt = 8.85×10⁻⁸ F ×25 V/s = 2.21×10⁻⁶ A ≈ 2.2 μA, which matches option C.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "mismatch",
+   "suggested_chapter": "Electricity and Magnetism – Capacitors/Displacement current",
+   "confidence": 0.98
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 3.8
+  }
+ },
+ "68dea619d0cda73d07e93aee": {
+  "output": {
+   "final_answer": "4",
+   "value": "4 s",
+   "working": "θ1=(1/2)α1t^2=(π/4)t^2, θ2=(1/2)α2t^2=(π/8)t^2; Δθ=θ1-θ2=(π/8)t^2. For first alignment Δθ=2π → (π/8)t^2=2π ⇒ t^2=16 ⇒ t=4 s",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 17.3
+  }
+ },
+ "68e872546e45ba37dcc16bc0": {
+  "output": {
+   "final_answer": "C",
+   "value": "1:1",
+   "working": "Coulomb's law gives equal magnitude of force on each charge: F=k|q1 q2|/r^2 for both, so ratio of forces =1:1.",
+   "stem_complete": true,
+   "missing": "Option C text missing (should be 1:1)",
+   "options_status": "correct_option_not_visible",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.85
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 22.7
+  }
+ },
+ "66fe9dbe22132e5a70a3e579": {
+  "output": {
+   "final_answer": "D",
+   "value": "",
+   "working": "Parathormone raises blood Ca while calcitonin lowers it – antagonistic. Insulin lowers blood glucose, glucagon raises it – antagonistic. Aldosterone promotes Na+ retention, ANF promotes Na+ excretion – antagonistic. Relaxin (pregnancy‑related tissue remodeling) and inhibin (FSH inhibition) act on different targets and are not opposite; thus not antagonistic. Hence the only non‑antagonistic pair is D.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 7.4
+  }
+ },
+ "620e23cecc50543bc7db9186": {
+  "output": {
+   "final_answer": "B",
+   "value": "",
+   "working": "Use outgroup comparison: a more distantly related snake (B) provides the ancestral state information; fossils absent (A) give no data; a mammal (C) is too distant; a coin flip (D) is irrelevant.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.95
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 12.4
+  }
+ },
+ "6208e80a9cb2ab67dac61bd0": {
+  "output": {
+   "final_answer": "C",
+   "value": "",
+   "working": "Chlorophyll absorbs red and blue light efficiently; green light is reflected and poorly utilized for photosynthesis. Herbs and shrubs growing in shade receive filtered light enriched in green, thus their photosynthetic rate is lower than that of sun‑exposed plants.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.94
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 2.5
+  }
+ },
+ "68dea657387eea3d0d95f54a": {
+  "output": {
+   "final_answer": "5",
+   "value": "5 D",
+   "working": "Combined focal length f_total = (u·v)/(u+v) with u=12.5 cm, v=4u=50 cm ⇒ f_total=10 cm. For two identical lenses in contact, 1/f_total=2/f ⇒ f=2·f_total=20 cm. Optical power P=1/f (metres) ⇒ P=1/0.20=5 D per lens.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 15.3
+  }
+ },
+ "61dffbec08489156b684bd22": {
+  "output": {
+   "final_answer": "A",
+   "value": "",
+   "working": "The mucosa of the small intestine is lined by simple columnar (absorptive) epithelium; therefore the tissue present in its lining is epithelial tissue.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 2.0
+  }
+ },
+ "68e870ef42c06737d6e565c4": {
+  "output": {
+   "final_answer": "D",
+   "value": "4800 N/m^2",
+   "working": "Using kinetic theory, p = (1/3)ρv_{rms}^2 = (1/3)(9×10^{-2} kg/m^3)(400 m/s)^2 = (1/3)(0.09)(160000)=4800 Pa.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 14.3
+  }
+ },
+ "68e8734442c06737d6e56da4": {
+  "output": {
+   "final_answer": "A",
+   "value": "0.8",
+   "working": "Mass m = weight/g = 100/10 = 10 kg. Friction f = μ·N = μ·100. For original force F: F−100μ = ma = 10·1 = 10 N. For doubled force 2F: 2F−100μ = ma' = 10·10 = 100 N. Subtracting gives F = 90 N. Substituting back: 90−100μ = 10 ⇒ μ = 0.8.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 14.6
+  }
+ },
+ "6956d79788d7701e5617bc29": {
+  "output": {
+   "final_answer": [
+    "B",
+    "C"
+   ],
+   "value": "0 W",
+   "working": "i=5sin(100t-π/2), e=200sin(100t). Phase difference Δφ=0-(-π/2)=π/2; cosΔφ=0. Average power P=V_m I_m/2·cosΔφ=(200·5/2)·0=0 W.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "multiple_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.98
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 17.4
+  }
+ },
+ "695ee00b88d7701e561aabc5": {
+  "output": {
+   "final_answer": [],
+   "value": "",
+   "working": "Resultant intensity I_R = I_1+I_2+2√(I_1 I_2) cosφ. For equal amplitudes I_1=I_2=I and φ=π/2, cosφ=0 → I_R=2I, not I. Hence A is false. R claims intensity always equals the sum of individual intensities for any non‑zero phase difference, which is false (only true when cosφ=0). Thus both A and R are false; none of the options (A‑D) is correct.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "none_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.97
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 18.9
+  }
+ },
+ "622df25ab70e4b50e44ff837": {
+  "output": {
+   "final_answer": "B",
+   "value": "",
+   "working": "Pressure inside a soap bubble = Patm+4γ/R (two surfaces). End1 has a hemispherical bubble with R=r, End2 a sub‑hemispherical cap with the same base radius r but larger radius of curvature R>r, so ΔP1>ΔP2. Hence air flows from end1 to end2. To eliminate the pressure difference the bubble at end1 must lose volume (shrink) and the bubble at end2 must gain volume (expand). Thus option B is correct.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.96
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 18.6
+  }
+ },
+ "6208e298fa399567e0878700": {
+  "output": {
+   "final_answer": "A",
+   "value": "Julius von Sachs",
+   "working": "Julius von Sachs performed experiments (e.g., iodine test) showing starch (derived from glucose) is synthesized in chloroplasts during photosynthesis, providing direct evidence that growing plants produce carbohydrate (glucose). Other listed scientists contributed to water uptake, pressure, or combustion chemistry, not glucose production evidence.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.97
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 12.8
+  }
+ },
+ "695ede2a88d7701e561aa9d9": {
+  "output": {
+   "final_answer": "D",
+   "value": "",
+   "working": "Statement I is correct: dialysis is used as a bridge/holding measure until a renal transplant. Statement II is incorrect: dialysis remains a supportive/life‑sustaining therapy for patients for whom transplant is unsuitable, not a non‑supportive measure. Therefore option D is correct.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "mismatch",
+   "suggested_chapter": "Human Physiology (Kidney)",
+   "confidence": 0.95
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 3.5
+  }
+ },
+ "612151a6a34397610a9a2e58": {
+  "output": {
+   "final_answer": "B",
+   "value": "16.8 eV",
+   "working": "Using de Broglie relation λ=h/p ⇒ p=h/λ. KE = p^2/(2m) = h^2/(2mλ^2). Substituting h=6.626×10^-34 J·s, m_e=9.11×10^-31 kg, λ=0.3 nm=3×10^-10 m gives KE≈2.68×10^-18 J ≈16.7 eV, matching option B (16.8 eV).",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 4.4
+  }
+ },
+ "60f742f6660d187cc13a8078": {
+  "output": {
+   "final_answer": "N/A",
+   "value": "",
+   "working": "Z=√(R²+X_L²) with R=40Ω, f=50Hz; X_L=2πfL requires L, which is not given, so Z cannot be evaluated. Hence the correct option cannot be selected.",
+   "stem_complete": false,
+   "missing": "inductance value (L)",
+   "options_status": "none_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.6
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 14.3
+  }
+ },
+ "68f21df0941cda588bc0470b": {
+  "output": {
+   "final_answer": "A",
+   "value": "2 times the initial value",
+   "working": "K = p^2/(2m). If new KE K' =4K then p'^2/(2m)=4p^2/(2m)⇒p'^2=4p^2⇒p'=2p (magnitude). Hence momentum doubles.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 11.1
+  }
+ },
+ "6264197209f4fd65f58f5707": {
+  "output": {
+   "final_answer": "C",
+   "value": "",
+   "working": "Golden rice is genetically engineered to accumulate β‑carotene (pro‑vitamin A). Consumption provides vitamin A and prevents the blindness associated with vitamin A deficiency; other options do not contain provitamin A.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 9.5
+  }
+ },
+ "617fa18efd53ff1629ed890f": {
+  "output": {
+   "final_answer": "D",
+   "value": "",
+   "working": "The lamina (blade) is the expanded green part of a leaf that bears veins and veinlets; petiole is the stalk, node is a stem point, and stipule is a small leaf‑like appendage.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 2.3
+  }
+ },
+ "6062ec84518e9535e120c422": {
+  "output": {
+   "final_answer": "A",
+   "value": "5.7 x 10^-5 /°C",
+   "working": "ΔL = α L0 ΔT → α = 0.19/(100×100)=1.9×10⁻⁵ °C⁻¹; β=3α=3×1.9×10⁻⁵=5.7×10⁻⁵ °C⁻¹",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 2.0
+  }
+ },
+ "5fc60508028950133eac8963": {
+  "output": {
+   "final_answer": "20",
+   "value": "20 N",
+   "working": "Normal force N equals the horizontal pressing force = 100 N. Maximum static friction f_max = μN = 0.3×100 = 30 N. Weight of the body W = mg = 2×10 = 20 N. Since the body is at rest, the actual static friction equals the weight (20 N), which is less than f_max, so the frictional force is 20 N.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.96
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 5.1
+  }
+ },
+ "68dea6e6387eea3d0d95f6f8": {
+  "output": {
+   "final_answer": "16",
+   "value": "16",
+   "working": "Using Bessel's displacement method: object‑screen distance D=150 cm, focal length f=24 cm. Solve u^2 - D*u + f*D=0 → u1=30 cm, u2=120 cm. Then v1=D-u1=120 cm, v2=D-u2=30 cm. Magnifications m1=v1/u1=120/30=4, m2=v2/u2=30/120=0.25. Ratio of image sizes = m1/m2 = 4/0.25 = 16.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 5.7
+  }
+ },
+ "68f21caf941cda588bc04365": {
+  "output": {
+   "final_answer": "B",
+   "value": "1.44 min",
+   "working": "N/N0=6/48=1/8 => e^{-λt}=1/8 => λ=ln8/3 min^{-1}=0.693 min^{-1}; mean life τ=1/λ≈1/0.693≈1.44 min",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "mismatch",
+   "suggested_chapter": "Radioactivity",
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 3.5
+  }
+ },
+ "68c801bc1b1dbc16dc93bf2b": {
+  "output": {
+   "final_answer": "A",
+   "value": "600 eV",
+   "working": "Set electron de‑Broglie wavelength λ_e = h/√(2mK) equal to the minimum X‑ray wavelength λ_X = hc/(eV) from an X‑ray tube of voltage V=24800 V. Equating gives h/√(2mK)=hc/(eV) → √(2mK)=eV/c → K=(eV)^2/(2mc^2). Using e=1.6×10⁻¹⁹ C, V=2.48×10⁴ V, m=9.1×10⁻³¹ kg, c=3×10⁸ m/s, K≈9.6×10⁻¹⁷ J≈600 eV.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 5.8
+  }
+ },
+ "68dea577d0cda73d07e9391c": {
+  "output": {
+   "final_answer": "14",
+   "value": "14 V",
+   "working": "V(R)=Q/(4π ε0 R)=16 V ⇒ Q/(8π ε0 R)=8 V. Inside sphere: V(r)=Q/(8π ε0 R)*(3 - r^2/R^2). At r=R/2: V_P=8*(3-1/4)=8*11/4=22 V. Outside: V(r)=Q/(4π ε0 r). At r=2R: V_S=Q/(8π ε0 R)=8 V. ΔV=V_P‑V_S=22‑8=14 V.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.98
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 5.4
+  }
+ },
+ "636283dbe3770c24f866e6d6": {
+  "output": {
+   "final_answer": "B",
+   "value": "4:1",
+   "working": "Total charge Q_total=64×5µC=320µC. Volume conservation: 64(4/3)πr^3 = (4/3)πR^3 ⇒ R=4r=0.08 m. σ_small=Q/(4πr^2). σ_big=Q_total/(4πR^2)=64Q/(4π·16r^2)=Q/(πr^2). Ratio σ_big/σ_small = (Q/πr^2)/(Q/4πr^2)=4, so 4:1.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 13.7
+  }
+ },
+ "6263d75bdd44e265ef926d97": {
+  "output": {
+   "final_answer": "20",
+   "value": "20 cm",
+   "working": "Let side length be L cm. For full submersion with 800 g extra mass: buoyant force = ρ_w·V =0.001 L^3 kg = m_cube+0.8. For partial submersion after removing mass: m_cube = ρ_w·V_sub =0.001 L^2(L-2). Equate: 0.001 L^3 =0.001 L^2(L-2)+0.8 → L^3 = L^3‑2L^2+800 → 2L^2=800 → L=20 cm.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "not_applicable",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 5.4
+  }
+ },
+ "622f08d7b70e4b50e4500a1b": {
+  "output": {
+   "final_answer": "C",
+   "value": "10 m/s",
+   "working": "Total momentum after impulse = m1·v1 + m2·v2 = 10·14 + 4·0 = 140 kg·m/s; total mass = 10+4 = 14 kg; V_CM = 140/14 = 10 m/s.",
+   "stem_complete": true,
+   "missing": null,
+   "options_status": "one_correct",
+   "chapter_fit": "ok",
+   "suggested_chapter": null,
+   "confidence": 0.99
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 2.5
+  }
  }
 }

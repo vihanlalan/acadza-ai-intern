@@ -195,5 +195,909 @@
    "prompt_version": "v3",
    "seconds": 23.8
   }
+ },
+ "68dea87d387eea3d0d95fbe3": {
+  "output": {
+   "solution_concludes": "A",
+   "reports": {},
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 32.6
+  }
+ },
+ "696a866665252c04fc1f81c2": {
+  "output": {
+   "solution_concludes": "50",
+   "reports": {
+    "R006": {
+     "verdict": "defect",
+     "repair": "stem_data",
+     "edit": null,
+     "route_request": "faculty_review",
+     "confidence": 0.9,
+     "evidence": "The stem provides pressure and bulk modulus but no initial dimensions; ΔV requires the cube’s volume, which is absent.",
+     "student_reply": "You’re right—the question does not give the cube’s size, so the numerical answer cannot be determined. We’ll ask the faculty to add the missing side length."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "answer_form",
+     "edit": {
+      "field": "answer",
+      "find": "50",
+      "replace": "50 mm^3"
+     },
+     "confidence": 0.85,
+     "evidence": "Solution ends with “50 mm^3” but answer field only contains “50\"."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 39.7
+  }
+ },
+ "63c7cce12981ed154ee92c94": {
+  "output": {
+   "solution_concludes": "C",
+   "reports": {
+    "R042": {
+     "verdict": "defect",
+     "repair": "wrong_chapter",
+     "edit": null,
+     "route_request": "faculty_review",
+     "confidence": 0.99,
+     "evidence": "question.chapter is \"Geometrical optics and optical instruments\" but the problem is about a parallel‑plate capacitor, which belongs to the Electricity and Magnetism chapter.",
+     "student_reply": "Thanks for spotting that – the chapter label is indeed incorrect and will be updated to the proper capacitor topic."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "notation",
+     "edit": {
+      "field": "question",
+      "find": "1 m | 2",
+      "replace": "1 m^2"
+     },
+     "confidence": 0.95,
+     "evidence": "question_text shows \"1 m | 2\" instead of the correct area \"1 m^2\"."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 39.0
+  }
+ },
+ "68dea619d0cda73d07e93aee": {
+  "output": {
+   "solution_concludes": "4",
+   "reports": {
+    "R031": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "Stored solution ends with t = 4 s, matching answer key 4.",
+     "student_reply": "Your calculation missed that the relative angular displacement must be 2π, which gives t²=16 and t=4 s, not 2 s."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "noise",
+     "edit": [
+      {
+       "field": "question",
+       "find": "frac( π | 2 ) r a d / s e c | 2",
+       "replace": "(π/2) rad/s^2"
+      },
+      {
+       "field": "question",
+       "find": "frac( π | 4 ) r a d / s e c | 2",
+       "replace": "(π/4) rad/s^2"
+      },
+      {
+       "field": "solution",
+       "find": "frac( 1 | 2 )",
+       "replace": "1/2"
+      },
+      {
+       "field": "solution",
+       "find": "frac( 2 | 1 )",
+       "replace": "2/1"
+      }
+     ],
+     "confidence": 0.95,
+     "evidence": "Question and solution text contain garbled fraction notation like 'frac( π | 2 ) …' which should be '(π/2) …' and 'frac( 1 | 2 )' should be '1/2'."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 37.6
+  }
+ },
+ "68e872546e45ba37dcc16bc0": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R011": {
+     "verdict": "defect",
+     "repair": "option_repair",
+     "edit": {
+      "field": "question",
+      "find": "(C) <br />",
+      "replace": "(C) 1 : 1 <br />"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "Option C line is empty in the raw HTML; adding '1 : 1' matches the correct physics answer.",
+     "student_reply": "The option C text was missing, so we added the correct ratio 1 : 1 as the answer."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "solution_fix",
+     "edit": {
+      "field": "solution",
+      "find": "<h3><math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><msub><mover><mrow><mi> F </mi></mrow><mo stretchy=\"true\">&rarr;</mo></mover><mrow><mn> 12 </mn></mrow></msub><mo>+</mo><msub><mover><mrow><mi> F </mi></mrow><mo stretchy=\"true\">&rarr;</mo></mover><mrow><mn> 21 </mn></mrow></msub><mo>=</mo><mn> 0 </mn></mrow></math><br />\n<br />\n<math display=\"inline\" xmlns=\"http://www.w3.org/1998/Math/MathML\"><mrow><mrow><mo fence=\"true\" form=\"prefix\" stretchy=\"true\">|</mo><msub><mover><mrow><mi> F </mi></mrow><mo stretchy=\"true\">&rarr;</mo></mover><mrow><mn> 12 </mn></mrow></msub><mo fence=\"true\" form=\"postfix\" stretchy=\"true\">|</mo></mrow><mo>=</mo><mrow><mo fence=\"true\" form=\"prefix\" stretchy=\"true\">|</mo><mo>&minus;</mo><msub><mover><mrow><mi> F </mi></mrow><mo stretchy=\"true\">&rarr;</mo></mover><mrow><mn> 21 </mn></mrow></msub><mo fence=\"true\" form=\"postfix\" stretchy=\"true\">|</mo></mrow></mrow></math></h3>\n",
+      "replace": "<h3>Both charges experience equal magnitude force, so the ratio of forces is 1 : 1.</h3>"
+     },
+     "confidence": 0.95,
+     "evidence": "The stored solution contains unrelated vector equations and does not give the ratio; a correct solution states the ratio 1 : 1."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 43.8
+  }
+ },
+ "66fe9dbe22132e5a70a3e579": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R035": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "Solution states relaxin and inhibin act on different targets and are not opposite, supporting answer D.",
+     "student_reply": "Relaxin and inhibin affect different systems and are not antagonistic; therefore option D is correct."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "notation",
+     "edit": {
+      "field": "question",
+      "find": "(C) Aldosterone Atrial Natriuretic Factor",
+      "replace": "(C) Aldosterone – Atrial Natriuretic Factor"
+     },
+     "confidence": 0.9,
+     "evidence": "Option C lacks a dash between Aldosterone and Atrial Natriuretic Factor."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 25.0
+  }
+ },
+ "620e23cecc50543bc7db9186": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R026": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.98,
+     "evidence": "Evolution is part of the NEET Biology syllabus and the question tests outgroup comparison, which is covered.",
+     "student_reply": "The topic is included in the NEET syllabus, so the question is valid. Thank you for checking!"
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "spelling",
+     "edit": {
+      "field": "solution",
+      "find": "may represents",
+      "replace": "may represent"
+     },
+     "confidence": 0.95,
+     "evidence": "Solution text contained the grammatical error 'may represents'."
+    },
+    {
+     "repair": "spelling",
+     "edit": {
+      "field": "solution",
+      "find": "wheater",
+      "replace": "whether"
+     },
+     "confidence": 0.95,
+     "evidence": "Solution text misspelled 'wheater' instead of 'whether'."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 34.7
+  }
+ },
+ "6208e80a9cb2ab67dac61bd0": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R017": {
+     "verdict": "already_fixed",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 1.0,
+     "evidence": "Faculty edited options on 2026-11-07 correcting 'mere' to 'more' and 'shurbs' to 'shrubs'.",
+     "student_reply": "Thanks for noticing the typo; it has already been corrected."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 26.5
+  }
+ },
+ "68dea657387eea3d0d95f54a": {
+  "output": {
+   "solution_concludes": "5 D",
+   "reports": {},
+   "secondary_findings": [
+    {
+     "repair": "markup_leak",
+     "edit": {
+      "field": "solution",
+      "find": "If f eq is the focal length of combination, we use u =− 12.5 c m For real image v = m u =+ 50 c m frac( 1 | v ) − frac( 1 | u ) = frac( 1 | f eq ) ⇒ frac( 1 | 50 ) + frac( 1 | 12.5 ) = frac( 1 | f eq ) ⇒ frac( 1 | f e q ) = frac( 1 | 10 ) ⇒ f e q = 10 c m Equivalent power of the lens system is P eq = frac( 1 | 0.1 ) = 10 D = 2 P eqcu Optical power of each lens is P eqch = 5 D",
+      "replace": "Combined focal length f = (u·v)/(u+v) = (12.5·50)/(12.5+50)=10 cm. Power of each identical lens = 1/(0.20 m)=5 D."
+     },
+     "confidence": 0.95,
+     "evidence": "Solution text contains raw \"frac( 1 | ... )\" markup instead of proper math."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 4.8
+  }
+ },
+ "61dffbec08489156b684bd22": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R012": {
+     "verdict": "defect",
+     "repair": "spelling",
+     "edit": {
+      "field": "question",
+      "find": "Epithellial tisue",
+      "replace": "Epithelial tissue"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "Option A is spelled 'Epithellial tisue' in the raw question; correct spelling is 'Epithelial tissue'.",
+     "student_reply": "Thanks for spotting the typo; we have corrected the spelling of option A."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 2.8
+  }
+ },
+ "68e870ef42c06737d6e565c4": {
+  "output": {
+   "solution_concludes": "4800 N / m^2",
+   "reports": {
+    "R004": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "P = (1/3)·ρ·v^2 = (1/3)·0.09·400^2 = 4800 Pa, which is option D.",
+     "student_reply": "Your calculation is off; using the correct formula P = (1/3)ρv² gives 4800 Pa, matching option D."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 29.4
+  }
+ },
+ "68e8734442c06737d6e56da4": {
+  "output": {
+   "solution_concludes": "μ = 0.8",
+   "reports": {
+    "R029": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "Using m=10 kg, F−100μ=10 and 2F−100μ=100 give μ=0.8, which is option A.",
+     "student_reply": "Your first equation is right, but the second (with doubled force) leads to μ=0.8 when solved together, so option A is correct."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 28.5
+  }
+ },
+ "6956d79788d7701e5617bc29": {
+  "output": {
+   "solution_concludes": "0",
+   "reports": {
+    "R015": {
+     "verdict": "defect",
+     "repair": "identical_options",
+     "edit": null,
+     "route_request": "faculty_review",
+     "confidence": 0.99,
+     "evidence": "Option B and C both read \"0 W\".",
+     "student_reply": "You are right, the two options are identical. We will have a teacher review this."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "noise",
+     "edit": [
+      {
+       "field": "solution",
+       "find": "&P=I r m s V | r m s cos ϕ",
+       "replace": "P=I r m s V | r m s cos ϕ"
+      },
+      {
+       "field": "solution",
+       "find": "&ϕ= 90 ∘",
+       "replace": "ϕ= 90 ∘"
+      }
+     ],
+     "confidence": 0.96,
+     "evidence": "Solution text contains stray '&' characters before P and φ."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 29.0
+  }
+ },
+ "695ee00b88d7701e561aabc5": {
+  "output": {
+   "solution_concludes": "D",
+   "reports": {
+    "R034": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.98,
+     "evidence": "For equal amplitudes and φ=π/2 the resultant intensity is 2I₀, not I₀, so Assertion A is false; Reason R claiming intensity always sums for any non‑zero phase difference is also false.",
+     "student_reply": "The intensity of two equal waves with a 90° phase difference doubles (2I₀), so the assertion that it stays the same is incorrect."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "unsound",
+     "edit": null,
+     "confidence": 0.99,
+     "evidence": "Both the stored answer (D) and the solution claim A false, R true, but physics shows both A and R are false, so none of the four options is correct."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 44.6
+  }
+ },
+ "622df25ab70e4b50e44ff837": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R025": {
+     "verdict": "display_issue",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "Question refers to a figure but quesImages array is empty.",
+     "student_reply": "The figure mentioned in the question is currently missing; the description is still usable, and we will upload the image shortly."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "spelling",
+     "edit": {
+      "field": "question",
+      "find": "hemispherial",
+      "replace": "hemispherical"
+     },
+     "confidence": 0.98,
+     "evidence": "Typo 'hemispherial' appears in the question stem."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 38.7
+  }
+ },
+ "6208e298fa399567e0878700": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R041": {
+     "verdict": "not_actionable",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.9,
+     "evidence": "Report contains only gibberish, no actionable issue identified.",
+     "student_reply": "Thanks for your message. We couldn't find any problem with the question."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 26.3
+  }
+ },
+ "695ede2a88d7701e561aa9d9": {
+  "output": {
+   "solution_concludes": "D",
+   "reports": {},
+   "secondary_findings": [
+    {
+     "repair": "wrong_chapter",
+     "edit": null,
+     "confidence": 0.9,
+     "evidence": "The stored chapter is 'Excretory Products and their Elimination' while the question discusses dialysis and kidney function, which belongs to the Human Physiology (Kidney) chapter."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 19.5
+  }
+ },
+ "612151a6a34397610a9a2e58": {
+  "output": {
+   "solution_concludes": "16.8 eV",
+   "reports": {
+    "R018": {
+     "verdict": "defect",
+     "repair": "solution_fix",
+     "edit": {
+      "field": "solution",
+      "find": "<h3><math xmlns=\\\"http://www.w3.org/1998/Math/MathML\\\" display=\\\"inline\\\"><mstyle displaystyle=\\\"true\\\"><mrow><mo>&#x0003D;</mo><mn>5.469</mn><mi>&#x000D7;</mi><msup><mn>10</mn><mrow><mo>&#x02212;</mo><mn>10</mn></mrow></msup><mi>m</mi><mo>&#x0003D;</mo><mn>5.47</mn><mi>\\\\AA</mi></mrow></mstyle></math> <math xmlns=\\\"http://www.w3.org/1998/Math/MathML\\\" display=\\\"inline\\\"><mstyle displaystyle=\\\"true\\\"><mrow><mi>&#x003BB;</mi><mo>&#x0003D;</mo><mfrac><mrow><mi>h</mi></mrow><mrow><mo stretchy=\\\"false\\\">&#x0007C;</mo><mi>p</mi><mo stretchy=\\\"false\\\">&#x0007C;</mo></mrow></mfrac><mo>&#x0003D;</mo><mfrac><mrow><mi>h</mi></mrow><mrow><mo stretchy=\\\"false\\\">&#x0007C;</mo><mi>I</mi><mo stretchy=\\\"false\\\">&#x0007C;</mo></mrow></mfrac></mrow></mstyle></math> <math xmlns=\\\"http://www.w3.org/1998/Math/MathML\\\" display=\\\"inline\\\"><mstyle displaystyle=\\\"true\\\"><mrow><mo>&#x0003D;</mo><mn>2.65</mn><mi>&#x000D7;</mi><msup><mn>10</mn><mrow><mo>&#x02212;</mo><mn>18</mn></mrow></msup><mi>J</mi></mrow></mstyle></math> <math xmlns=\\\"http://www.w3.org/1998/Math/MathML\\\" display=\\\"inline\\\"><mstyle displaystyle=\\\"true\\\"><mrow><mo>&#x0003D;</mo><mn>16.8</mn><mi>e</mi><mi>V</mi></mrow></mstyle></math></h3>",
+      "replace": "<h3>Using de Broglie relation \\(\\lambda = h/p\\) ⇒ \\(p = h/\\lambda\\). Kinetic energy \\(KE = p^{2}/(2m) = h^{2}/(2m\\lambda^{2})\\). Substituting \\(h = 6.626\\times10^{-34}\\,\\text{J·s}\\), \\(m_{e}=9.11\\times10^{-31}\\,\\text{kg}\\), \\(\\lambda =0.3\\,\\text{nm}=3\\times10^{-10}\\,\\text{m}\\) gives \\(KE \\approx 2.68\\times10^{-18}\\,\\text{J}=16.8\\,\\text{eV}\\). Hence option B.</h3>"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "Solution_raw ends with '=16.8 eV' but the steps calculate wavelength (5.47 Å) unrelated to kinetic energy.",
+     "student_reply": "You’re right—the solution shown is for a different problem. We’ve replaced it with the correct calculation that leads to 16.8 eV."
+    },
+    "R019": {
+     "verdict": "defect",
+     "repair": "solution_fix",
+     "edit": {
+      "field": "solution",
+      "find": "<h3><math xmlns=\\\"http://www.w3.org/1998/Math/MathML\\\" display=\\\"inline\\\"><mstyle displaystyle=\\\"true\\\"><mrow><mo>&#x0003D;</mo><mn>5.469</mn><mi>&#x000D7;</mi><msup><mn>10</mn><mrow><mo>&#x02212;</mo><mn>10</mn></mrow></msup><mi>m</mi><mo>&#x0003D;</mo><mn>5.47</mn><mi>\\\\AA</mi></mrow></mstyle></math> <math xmlns=\\\"http://www.w3.org/1998/Math/MathML\\\" display=\\\"inline\\\"><mstyle displaystyle=\\\"true\\\"><mrow><mi>&#x003BB;</mi><mo>&#x0003D;</mo><mfrac><mrow><mi>h</mi></mrow><mrow><mo stretchy=\\\"false\\\">&#x0007C;</mo><mi>p</mi><mo stretchy=\\\"false\\\">&#x0007C;</mo></mrow></mfrac><mo>&#x0003D;</mo><mfrac><mrow><mi>h</mi></mrow><mrow><mo stretchy=\\\"false\\\">&#x0007C;</mo><mi>I</mi><mo stretchy=\\\"false\\\">&#x0007C;</mo></mrow></mfrac></mrow></mstyle></math> <math xmlns=\\\"http://www.w3.org/1998/Math/MathML\\\" display=\\\"inline\\\"><mstyle displaystyle=\\\"true\\\"><mrow><mo>&#x0003D;</mo><mn>2.65</mn><mi>&#x000D7;</mi><msup><mn>10</mn><mrow><mo>&#x02212;</mo><mn>18</mn></mrow></msup><mi>J</mi></mrow></mstyle></math> <math xmlns=\\\"http://www.w3.org/1998/Math/MathML\\\" display=\\\"inline\\\"><mstyle displaystyle=\\\"true\\\"><mrow><mo>&#x0003D;</mo><mn>16.8</mn><mi>e</mi><mi>V</mi></mrow></mstyle></math></h3>",
+      "replace": "<h3>Using de Broglie relation \\(\\lambda = h/p\\) ⇒ \\(p = h/\\lambda\\). Kinetic energy \\(KE = p^{2}/(2m) = h^{2}/(2m\\lambda^{2})\\). Substituting \\(h = 6.626\\times10^{-34}\\,\\text{J·s}\\), \\(m_{e}=9.11\\times10^{-31}\\,\\text{kg}\\), \\(\\lambda =0.3\\,\\text{nm}=3\\times10^{-10}\\,\\text{m}\\) gives \\(KE \\approx 2.68\\times10^{-18}\\,\\text{J}=16.8\\,\\text{eV}\\). Hence option B.</h3>"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "Solution mentions 5.47 Å wavelength, unrelated to the kinetic‑energy question.",
+     "student_reply": "You’re correct—the displayed solution is for a wavelength problem, not this kinetic‑energy question. We’ve updated it to the proper derivation."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 31.9
+  }
+ },
+ "60f742f6660d187cc13a8078": {
+  "output": {
+   "solution_concludes": "C",
+   "reports": {
+    "R008": {
+     "verdict": "defect",
+     "repair": "stem_data",
+     "edit": {
+      "field": "question",
+      "find": "inductance",
+      "replace": "inductance of 95.5 mH"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.95,
+     "evidence": "Question missing inductance value; solution uses L=95.5 mH to compute Z≈50 Ω, matching answer C.",
+     "student_reply": "Thanks for noticing the missing data. The question should state the inductance (95.5 mH), which leads to the 50 Ω answer."
+    },
+    "R007": {
+     "verdict": "defect",
+     "repair": "stem_data",
+     "edit": {
+      "field": "question",
+      "find": "inductance",
+      "replace": "inductance of 95.5 mH"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.95,
+     "evidence": "Question missing inductance value; solution uses L=95.5 mH to compute Z≈50 Ω, matching answer C.",
+     "student_reply": "You’re right – the inductance wasn’t given. Adding 95.5 mH fixes the problem and yields the 50 Ω answer."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 39.7
+  }
+ },
+ "68f21df0941cda588bc0470b": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R038": {
+     "verdict": "app_issue",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "Correct answer is A (momentum doubles); key matches, so the problem is a click‑recording error.",
+     "student_reply": "Your answer A is correct; the system mistakenly recorded B, we will look into the app issue."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 24.4
+  }
+ },
+ "6264197209f4fd65f58f5707": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R040": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.96,
+     "evidence": "Answer key C matches the solution which explains that Golden rice provides provitamin A and prevents blindness.",
+     "student_reply": "The answer C is correct; Golden rice is engineered to contain beta‑carotene, which prevents vitamin A‑deficiency blindness. Thanks for checking."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "spelling",
+     "edit": {
+      "field": "solution",
+      "find": "riceis",
+      "replace": "rice is"
+     },
+     "confidence": 0.9,
+     "evidence": "Solution text contains 'Golden riceis' missing a space."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 19.9
+  }
+ },
+ "617fa18efd53ff1629ed890f": {
+  "output": {
+   "solution_concludes": null,
+   "reports": {
+    "R013": {
+     "verdict": "defect",
+     "repair": "exam_reference",
+     "edit": {
+      "field": "question",
+      "find": "(NEET 2019)",
+      "replace": ""
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "Exam tag '(NEET 2019)' appears in the question text.",
+     "student_reply": "You are right, the exam reference should not be in the question; we will remove it."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "spelling",
+     "edit": {
+      "field": "question",
+      "find": "ofleaf",
+      "replace": "of leaf"
+     },
+     "confidence": 0.95,
+     "evidence": "The phrase 'ofleaf' lacks a space between 'of' and 'leaf' in the question text."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 22.2
+  }
+ },
+ "6062ec84518e9535e120c422": {
+  "output": {
+   "solution_concludes": "5.7×10^-5/°C",
+   "reports": {
+    "R027": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "Blind solve and correct calculation both give 5.7×10⁻⁵ °C⁻¹, which is option A.",
+     "student_reply": "Your calculation is correct; the answer is option A (5.7 × 10⁻⁵ °C⁻¹)."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 28.3
+  }
+ },
+ "5fc60508028950133eac8963": {
+  "output": {
+   "solution_concludes": "20 N",
+   "reports": {
+    "R024": {
+     "verdict": "defect",
+     "repair": "answer_form",
+     "edit": {
+      "field": "answer",
+      "find": "20",
+      "replace": "20 N"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "Solution states weight W = 20 N and says actual friction equals weight.",
+     "student_reply": "You are right, the question did not specify the unit. It should be 20 N, and we have updated the answer to include the unit."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 23.2
+  }
+ },
+ "68dea6e6387eea3d0d95f6f8": {
+  "output": {
+   "solution_concludes": "16",
+   "reports": {},
+   "secondary_findings": [
+    {
+     "repair": "noise",
+     "edit": {
+      "field": "solution",
+      "find": "<mrow><mtext> </mtext><mi mathvariant=\"normal\"> c </mi><mi mathvariant=\"normal\"> m </mi></mrow>",
+      "replace": ""
+     },
+     "confidence": 0.9,
+     "evidence": "The solution raw contains an extra <mrow> with \"c m\" after x = 90, which is unnecessary text."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 30.5
+  }
+ },
+ "68f21caf941cda588bc04365": {
+  "output": {
+   "solution_concludes": "B",
+   "reports": {
+    "R021": {
+     "verdict": "defect",
+     "repair": "answer_key",
+     "edit": {
+      "field": "answer",
+      "find": [
+       "",
+       "B"
+      ],
+      "replace": [
+       "B"
+      ]
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "answer field is ['','B'] containing an empty string before the correct option B",
+     "student_reply": "You are right – the question has a single correct answer B, but the system stored it as a multi‑answer list with an empty entry. We have fixed the answer key to contain only ['B']."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 33.6
+  }
+ },
+ "68c801bc1b1dbc16dc93bf2b": {
+  "output": {
+   "solution_concludes": "600 eV",
+   "reports": {
+    "R039": {
+     "verdict": "language_mode",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "Student requests the question in Hindi.",
+     "student_reply": "We understand you’d like a Hindi version; currently only English is available."
+    }
+   },
+   "secondary_findings": [
+    {
+     "repair": "noise",
+     "edit": {
+      "field": "solution",
+      "find": "K&=",
+      "replace": "K="
+     },
+     "confidence": 0.9,
+     "evidence": "Solution text contains stray '&' characters before '='."
+    }
+   ]
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 43.4
+  }
+ },
+ "68dea577d0cda73d07e9391c": {
+  "output": {
+   "solution_concludes": "14",
+   "reports": {
+    "R044": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.99,
+     "evidence": "Solution derives ΔV = 14 V, matching stored answer 14",
+     "student_reply": "Your calculation missed the contribution from the outer region; the correct potential difference is 14 V as shown in the solution."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 36.3
+  }
+ },
+ "636283dbe3770c24f866e6d6": {
+  "output": {
+   "solution_concludes": "4:1",
+   "reports": {
+    "R043": {
+     "verdict": "no_error",
+     "repair": null,
+     "edit": null,
+     "route_request": "no_change",
+     "confidence": 0.97,
+     "evidence": "Combined radius is 4r, area 16× larger, charge 64× larger, so σ_big/σ_small =64/16 =4, giving answer B (4:1).",
+     "student_reply": "Your point about the bigger drop having more area is correct, but the total charge also increases 64‑fold. Accounting for both, the surface‑charge‑density ratio is 4:1, so option B is right."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 33.9
+  }
+ },
+ "6263d75bdd44e265ef926d97": {
+  "output": {
+   "solution_concludes": "40 cm",
+   "reports": {
+    "R016": {
+     "verdict": "defect",
+     "repair": "solution_fix",
+     "edit": {
+      "field": "solution",
+      "find": "<span style=\"color:#000000\">a = 40 cm</span>",
+      "replace": "<span style=\"color:#000000\">a = 20 cm</span>"
+     },
+     "route_request": "auto_apply",
+     "confidence": 0.99,
+     "evidence": "Stored solution ends with a = 40 cm, but correct algebra from 800 = 2 a^2 yields a = 20 cm.",
+     "student_reply": "The solution’s final step is wrong – it should give a = 20 cm, not 40 cm. We have corrected the answer in the solution."
+    }
+   },
+   "secondary_findings": []
+  },
+  "meta": {
+   "model": "openai/gpt-oss-120b",
+   "provider": "groq",
+   "prompt_version": "v3",
+   "seconds": 1368.9
+  }
  }
 }

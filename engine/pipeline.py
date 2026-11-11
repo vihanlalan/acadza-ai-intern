@@ -15,6 +15,8 @@ Outputs: results.json, unreported_findings.json, console/data.json
 from __future__ import annotations
 
 import argparse
+import os
+from pathlib import Path
 import json
 import math
 import sys
@@ -25,6 +27,9 @@ from .data import ROOT, load_all, to_text, view
 from .guards import gate
 from .prompts import SOLVER_SCHEMA, SOLVER_SYSTEM, AUDITOR_SCHEMA, auditor_system, PROMPT_VERSION
 from .scanners import comment_signals, parse_options, question_signals
+
+# RF_OUT_DIR lets an experimental run (e.g. a live Groq pass) write somewhere other than the repo.
+OUT = Path(os.environ.get("RF_OUT_DIR") or ROOT)
 
 # How much a defect of each kind hurts a student who meets it right now.
 SEVERITY = {
@@ -63,7 +68,7 @@ def auditor_user(v: dict, qsig: list, solve: dict | None, reports: list, rsig: d
     return "\n".join(parts)
 
 
-def run(live: bool = False, only: str | None = None) -> dict:
+def run(live: bool = False, only: str | None = None, check: bool = False) -> dict:
     questions, reports, taxonomy = load_all()
     by_q = defaultdict(list)
     for r in reports:
@@ -116,15 +121,17 @@ def run(live: bool = False, only: str | None = None) -> dict:
         cases.append(_case(v, q, qsig, solve, audit, case_reports, secondary))
 
     results.sort(key=lambda r: r["reportId"])
-    _write(ROOT / "results.json", results)
-    _write(ROOT / "unreported_findings.json", unreported)
+    if check:
+        _check_committed(ROOT / "results.json", results)
+    _write(OUT / "results.json", results)
+    _write(OUT / "unreported_findings.json", unreported)
     cases.sort(key=lambda c: -c["urgency"]["score"])
     payload = {"generatedWith": {"promptVersion": PROMPT_VERSION, "provider": llm.PROVIDER,
                                  "stageMeta": _stage_meta()},
                "taxonomy": taxonomy, "cases": cases}
-    _write(ROOT / "console" / "data.json", payload)
+    _write(OUT / "console" / "data.json", payload)
     # Same payload as a script so the console also works from file:// (no fetch).
-    (ROOT / "console" / "data.js").write_text(
+    (OUT / "console" / "data.js").write_text(
         "window.RF_DATA = " + json.dumps(payload, ensure_ascii=False) + ";\n", encoding="utf-8")
     return {"results": results, "unreported": unreported, "cases": cases}
 
@@ -189,8 +196,22 @@ def _stage_meta():
     return out
 
 
+def _check_committed(path, results):
+    """Build-time guard: the committed results.json must be exactly what code + cache produce."""
+    if not path.exists():
+        raise SystemExit(f"check failed: {path.name} is missing")
+    committed = {r["reportId"]: r for r in json.loads(path.read_text(encoding="utf-8"))}
+    fresh = {r["reportId"]: r for r in results}
+    bad = sorted(k for k in committed.keys() | fresh.keys()
+                 if json.dumps(committed.get(k), sort_keys=True) != json.dumps(fresh.get(k), sort_keys=True))
+    if bad:
+        raise SystemExit(f"check failed: results.json is stale for {len(bad)} report(s): {', '.join(bad[:10])}"
+                         " - run `python -m engine.pipeline` and commit the result")
+    print(f"check ok: results.json matches the pipeline output ({len(fresh)} reports)")
+
+
 def _write(path, obj):
-    path.parent.mkdir(exist_ok=True)
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
@@ -198,8 +219,9 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--live", action="store_true")
     ap.add_argument("--only")
+    ap.add_argument("--check", action="store_true", help="fail if committed results.json differs from fresh output (used by the deploy build)")
     a = ap.parse_args()
-    out = run(live=a.live, only=a.only)
+    out = run(live=a.live, only=a.only, check=a.check)
     from collections import Counter
     print("reports:", len(out["results"]), dict(Counter(r["route"] for r in out["results"])))
     print("verdicts:", dict(Counter(r["verdict"] for r in out["results"])))

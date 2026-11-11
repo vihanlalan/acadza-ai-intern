@@ -62,6 +62,9 @@ def run_stage(stage: str, key: str, system: str, user: str, schema: dict, live: 
     cache = load_cache(stage)
     if not live and key in cache:
         return cache[key]["output"]
+    # RF_RESUME=1: a live run skips entries this provider already produced (rate-limited free tiers)
+    if live and os.environ.get("RF_RESUME") and cache.get(key, {}).get("meta", {}).get("provider") == PROVIDER:
+        return cache[key]["output"]
     if not live:
         return None
     t0 = time.time()
